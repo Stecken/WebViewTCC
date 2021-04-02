@@ -7,6 +7,46 @@
         {
             "source": "/home",
             "destination": "/index.html"
+        },
+        {
+            "source": "/sobre",
+            "destination": "/pages/sobre.html"
+        },
+        {
+            "source": "/sobre/resumo",
+            "destination": "/pages/sobre.html"
+        },
+        {
+            "source": "/sobre/breno",
+            "destination": "/pages/sobre.html"
+        },
+        {
+            "source": "/sobre/paulo",
+            "destination": "/pages/sobre.html"
+        },
+        {
+            "source": "/sobre/fefel",
+            "destination": "/pages/sobre.html"
+        },
+        {
+            "source": "/sobre/rafael",
+            "destination": "/pages/sobre.html"
+        },
+        {
+            "source": "/sobre/samuel",
+            "destination": "/pages/sobre.html"
+        },
+        {
+            "source": "/sobre/alison",
+            "destination": "/pages/sobre.html"
+        },
+        {
+            "source": "/sobre/yuri",
+            "destination": "/pages/sobre.html"
+        },
+        {
+            "source": "/dados",
+            "destination": "/pages/dados.html"
         }
     ]
 }
