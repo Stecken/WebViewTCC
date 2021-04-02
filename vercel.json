@@ -77,7 +77,7 @@
     ],
     "routes": [
         {
-            "src": "/scripts/(.*)/(.*)",
+            "src": "/scripts/.*/.*",
             "status": 404
         }
     ]
