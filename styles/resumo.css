@@ -1,0 +1,112 @@
+.engloba-conteudo{
+    padding: 20px;
+}
+.engloba-resumo-topico{
+    width: 100%;
+    display:flex;
+    padding: 30px 0;
+}
+.row{
+    flex-direction: row;
+}
+.row-reverse{
+    flex-direction: row-reverse;
+}
+.lado-direito{
+    justify-content: flex-end !important;
+}
+.igualmente{
+    justify-content: space-evenly;
+}
+.pad-left{
+    padding-left: 6rem;
+}
+.pad-right{
+    padding-right: 6rem;
+}
+.resumo-topico{
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    max-width: 70%;
+    width: auto;
+}
+.resumo-p{
+    color: rgb(255, 255, 255);
+}
+.titulo-resumo{
+    color: #fff;
+    font-size: xx-large;
+    letter-spacing: 2px;
+    font-weight:bolder;
+    text-shadow: 1px 1px 2px #000 !important;
+}
+.div-image-aluno{
+    display: flex;
+    flex-grow: 2;
+    margin: auto;
+}
+.image-aluno{
+    max-width: 300px; /*mudei 50*/
+    max-height: 300px; /*mudei 50*/
+    width: auto;
+    height: auto;
+}
+#le-pagina{
+    display: flex;
+    width: 100%;
+    height: auto;
+    padding: 20px 5%;
+    justify-content:center;
+    flex-direction: column;
+}
+
+@media(max-width:768px){
+    #le-pagina{
+        display: flex;
+        flex-direction: column;
+    }
+    .engloba-conteudo{
+        width: 100%;
+        display: flex;
+        flex-direction: column !important;
+    }
+    .engloba-resumo-topico{
+        display: flex;
+        flex-direction: column !important;
+    }
+    .pad-left{
+        padding: 0px;
+    }
+    .pad-right{
+        padding: 0px;
+    }
+    .row{
+        flex-direction: column !important;
+    }
+    .row-reverse{
+        flex-direction: column-reverse !important;
+    }
+    .resumo-topico{
+        display: flex;
+        flex-direction: column !important;
+        max-width: 100%;
+        width: 100%;
+        text-align: center;
+    }
+    .titulo-aluno{
+        text-align: center;
+    }
+    .alunoinfo{
+        display:block;
+    }
+    .div-image-aluno{
+        display: flex;
+        justify-items: center;
+        align-items: stretch;
+    }
+    .image-aluno{
+        align-self: center;
+    }
+}

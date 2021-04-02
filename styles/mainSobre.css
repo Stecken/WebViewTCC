@@ -26,6 +26,9 @@ main {
 .engloba-conteudo{
     background-color: #246ad7e6;
 }
+#le-pagina {
+    padding-bottom: 1rem;
+}
 @media(max-width:940px){
 }
 @media(max-width:800px){

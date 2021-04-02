@@ -15,7 +15,8 @@
 .div-image-aluno{
     margin: auto;
 }
-.image-aluno{
+.image-aluno img{
+    padding-bottom: 1rem;
     max-width: 300px; /*mudei 50*/
     max-height: 300px; /*mudei 50*/
     width: auto;
@@ -52,6 +53,8 @@
         align-items: stretch;
     }
     .image-aluno{
+        padding-top: 1rem;
+        padding-bottom: 1rem;
         align-self: center;
     }
 }
