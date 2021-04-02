@@ -47,6 +47,31 @@
         {
             "source": "/dados",
             "destination": "/pages/dados.html"
+        },
+
+        {
+            "source": "/scripts",
+            "destination": "/403.html"
+        },
+        {
+            "source": "/scripts/(.*)",
+            "destination": "/403.html"
+        },
+        {
+            "source": "/pages",
+            "destination": "/403.html"
+        },
+        {
+            "source": "/pages/(.*)",
+            "destination": "/403.html"
+        },
+        {
+            "source": "/files",
+            "destination": "/403.html"
+        },
+        {
+            "source": "/files/(.*)",
+            "destination": "/403.html"
         }
     ]
 }
