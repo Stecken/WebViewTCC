@@ -74,11 +74,5 @@
             "source": "/files/(.*)",
             "destination": "/403.html"
         }
-    ],
-    "routes": [
-        {
-            "src": "/scripts/.*/.*",
-            "status": 404
-        }
     ]
 }
