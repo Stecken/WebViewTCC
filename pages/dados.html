@@ -1,29 +1,59 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Fonte-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
+    <!--font-awesome image-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap" rel="stylesheet">
+    -->
     <!---->
     <link rel="stylesheet" href="/styles/index.css">
+    <link rel="stylesheet" href="/styles/indexSemEfeito.css">
+    <link rel="stylesheet" href="/styles/mainSobre.css">
+    <link rel="stylesheet" href="/styles/footer.css">
+    <link rel="stylesheet" href="/styles/navsobre.css">
     <!--Jquery - Não usado-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Concentrador Solar</title>
 </head>
+
 <body>
-    <header>
+    <div class="aviso">
+        <h2>erro ao carregar</h2>
+    </div>
+    <header class="cabeca">
         <div class="bonito">
             <img src="/files/images/natura-logo.png" alt="Natura" id="logo">
-            <h1 class="titulo">Concentrador Solar</h1>
+            <div class="mesma-linha">
+                <h1 class="titulo">Concentrador Solar</h1>
+                <img src="/files/images/menu_logo.png" alt="" class="risco3">
+            </div>
         </div>
         <div class="menu">
-            <a href="/">Home</a>
-            <a href="/sobre">Sobre</a>
-            <a href="/dados">Dados</a>
+            <a href="/" class="strong">Home</a>
+            <a href="/sobre" class="strong">Sobre</a>
+            <a href="/dados" class="strong">Dados</a>
+        </div>
+        <div class="menu-mobile">
+            <hr id="separa">
+            <ul class="menu-ul-mobile">
+                <li>
+                    <a href="/" class="strong">Home</a>
+                </li>
+                <li>
+                    <a href="/sobre" class="strong">Sobre</a>
+                </li>
+                <li>
+                    <a href="/dados" class="strong">Dados</a>
+                </li>
+            </ul>
         </div>
     </header>
     <!--Puxar dados API-->
