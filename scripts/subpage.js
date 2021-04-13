@@ -6,17 +6,8 @@ const puxapage = (path) => {
         window.document.body.style.backgroundColor = '#fff';
         window.document.body.style.opacity = '0.5';
         $("#le-pagina").load(path, (response, status, xhr) => {
-            let aviso = $('.aviso')
             if(status == 'error'){
-                $(window).scrollTop(0);
-                aviso.css('visibility', 'visible');
-                aviso.css('max-width', '150px');
-                setTimeout(() => {
-                    aviso.css('max-width', '0');
-                    setTimeout(() => {
-                        aviso.css('visibility', 'hidden');
-                    }, 2000);
-                }, 5000);
+                console.log("Erro ao carregar o conteudo")
             }
             window.document.body.style.backgroundColor = '';
             window.document.body.style.opacity = '';

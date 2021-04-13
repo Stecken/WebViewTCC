@@ -1,13 +1,3 @@
-@font-face {
-    font-family: "Metropolis-Light";
-    src: url("/files/Fonts/Metropolis-Light.otf") format("opentype");
-}
-
-@font-face {
-    font-family: "Metropolis-Bold";
-    src: url("/files/Fonts/Metropolis-Bold.otf") format("opentype");
-}
-
 *{
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif !important;
@@ -22,61 +12,49 @@ body{
 }
 a {
     text-decoration: none;
+    text-shadow: 1px 1px 1.5px #000;
+}
+a:link{
+    color: white;
+}
+a:visited{
+    color: white;
 }
 header {
     z-index:2;
     position: fixed;
     width: 100%;
     height: auto;
+    padding: 1rem 30px;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
     align-items: center;
-    background-color: #fafafa;
-    box-shadow: 0 0 0.5em black;
+    background-color: #1d6d8f;
 }
 header > div.bonito {
     display: flex;
     width: 400px;
     justify-content: space-around;
 }
-.mesma-linha {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-header > div.bonito > div.mesma-linha > div.titulo-header > h1.titulo {
-    margin: 0;
-    font-family: 'Metropolis-Light', sans-serif !important;
-    font-weight: 600;
-    text-transform: uppercase;
-    color: #000;
-    font-size: 1.5rem;
-    /*text-shadow: 2px 2px 1px #000;*/
-}
-#solarTitle{
+header > div.bonito > div.mesma-linha > h1.titulo {
     color: #fff;
-    text-shadow:#000 1px -1px, #000 -1px 1px, #000 1px 1px, #000 -1px -1px
+    text-shadow: 2px 2px 1px #000;
 }
 .strong{
     font-weight: bold;
 }
 #logo{
-    max-width: 3.6rem;
-    max-height: 3.6rem;
+    max-width: 4.5rem;
+    max-height: 4.5rem;
     width: auto;
     height: auto;
-    align-self: center;
-}
-#flecha-separa{
-    max-width: 3rem;
-    max-height: 100%;
-    width: auto;
-    height: auto;
-    z-index:4;
 }
 /*Mobile*/
+#separa{
+    color: #2e6177;
+}
 .menu-mobile{
     width: 100%;
     height: auto;
@@ -99,21 +77,22 @@ header > div.bonito > div.mesma-linha > div.titulo-header > h1.titulo {
     display: block;
 }
 .menu-mobile ul > li > a {
-    color: #000;
     display: block;
     width: 100%;
     padding: 0;
+    text-shadow: 2px 2px 1px #000;
 }
 .menu-mobile ul > li > a:visited {
-    color: #000;
+    color: white;
     text-shadow: 2px 2px 1px #000;
 }
 .menu-mobile ul > li > a:hover {
-    color: rgba(17, 17, 17, 0.7);
+    color: rgba(255, 255, 255, 0.7);
 }
 img.risco3 {
     display: none;
     transition: transform 0.7s;
+    filter: invert(100%);
     max-width: 50px;
     max-height: 50px;
     width: auto;
@@ -128,32 +107,29 @@ img.risco3:hover{
     display: flex;
 }
 .menu a {
-    font-family: 'Metropolis-Light', sans-serif !important;
     padding: 0 15px;
     font-size: 19px;
     text-decoration: none;
-    color:#000;
-    text-decoration: double;
+    color:#fff;
 }
 .menu a:hover{
-    color: rgba(34, 34, 34, 0.7);
+    color: rgba(255, 255, 255, 0.7);
 }
 .menu a:visited{
-    color:#000;
+    color:#fff;
 }
 @media(max-width:780px){
-    .titulo-header {
-        font-size: 1rem;
-    }
     header{
         display: block;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
     }
     header > div.bonito {
         width: 100%;
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
+        justify-content: center;
+        align-items:center;
     }
     header > div.bonito > img#logo{
         max-width: 3.5rem;
@@ -161,16 +137,22 @@ img.risco3:hover{
         width: auto;
         height: auto;
         align-self: center;
+        padding-right: 1rem;
     }
-    .mesma-linha{
+    div.mesma-linha{
         width: 100%;
         display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-around;
+        flex-direction:row;
+        justify-content: space-between;
+        flex-grow: 2;
+    }
+    div.mesma-linha h1.titulo{
+        font-size: 21px;
+        align-self: stretch;
     }
     img.risco3{
         display: flex;
+        align-self: flex-end;
     }
     .menu{
         display: none;
@@ -186,9 +168,17 @@ img.risco3:hover{
         display:flex;
     }
 }
+@media(max-width:664px){
+}
 @media(max-width:520px){
     div.mesma-linha h1.titulo{
         font-size: 19px;
         align-self: stretch;
     }
+}
+@media(max-width:400px){
+}
+@media(max-width:250px){
+}
+@media(max-width:300px){
 }

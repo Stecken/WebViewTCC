@@ -5,24 +5,101 @@ main {
 .div-image-central{
     z-index:1;
     width: 100%;
-    height: 600px;
-    max-height: 600px;
-    background-image: url(/files/images/ceu.jpg);
+    height: 1200px;
+    max-height: 800px;
+    background-image: url(/files/images/homeBackGround.png);
     background-size: cover;
     background-position: 0% 40%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 .div-image-central h1{
     text-align: center;
-    text-shadow: 2px 3px 1px #000;
+    font-family: 'Metropolis-Light', sans-serif !important;
+    font-size: 1.5rem;
 }
 .div-image-central h1.titulo{
+    font-family: 'Metropolis-Bold', sans-serif !important;
     margin: 0;
-    color: #fff;
+    color: #000;
     text-align: center;
 }
+#sub-titulo {
+    text-align: center;
+    padding: 0 10rem;
+}
+#engloba-buttons-image{
+    padding-top: 2rem;
+    display: flex;
+    width: 30%;
+    flex-wrap: wrap;
+    
+    align-items: center;
+    justify-content: space-around;
+}
+div.buttonImage {
+    border-color: #ed9912;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 8rem;
+    height: 2rem;
+}
+
+a {
+    color: #000;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    transition: all .3s;
+	position: relative;
+	overflow: hidden;
+	z-index: 1;
+}
+div.buttonImage > a:after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border-radius: 0rem;
+	z-index: -2;
+}
+
+div.buttonImage > a:before {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 0%;
+	height: 100%;
+	background-color: #ed9912;
+	transition: all .3s;
+	border-radius: 0rem;
+	z-index: -1;	
+}
+div.buttonImage:hover{
+    box-shadow: -5px 5px 5px -5px #333;
+}
+
+div.buttonImage > a:hover{
+    color: white;
+    text-shadow: 1px 1px 2px black;
+}
+
+div.buttonImage > a:hover:before{
+    width: 100%;
+}
+
 .engloba-inform{
     width: 100%;
     padding: 50px 30px;
@@ -60,6 +137,17 @@ p.inf{
     height: auto;
 }
 @media(max-width:940px){
+    .div-image-central {
+        background-size:cover;
+        background-position: 50% 50%;
+        background-attachment:unset;
+    }
+    #sub-titulo {
+        padding: 0 8rem;
+    }
+    .div-image-central h1{
+        font-size: 1.3rem;
+    }
     .pessoas{
         padding: 0;
         margin: 0 auto 0 auto;
@@ -81,8 +169,17 @@ p.inf{
     .engloba-pessoas{
         display: block;
     }
+    #engloba-buttons-image{
+        width: 40%;
+    }
 }
 @media(max-width:800px){
+    #sub-titulo {
+        padding: 0 5rem;
+    }
+    .div-image-central h1{
+        font-size: 1.2rem;
+    }
     .pessoas{
         display: block;
         max-width: 90%;
@@ -90,6 +187,21 @@ p.inf{
         width: auto;
         height: auto;
     }
+    #engloba-buttons-image{
+        width: 60%;
+    }
 }
 @media(max-width:664px){
+    #sub-titulo {
+        padding: 0 3rem;
+    }
+    .div-image-central h1{
+        font-size: 1rem;
+    }
+    #engloba-buttons-image{
+        width: 90%;
+    }
+}
+@media(max-width:500px){
+
 }

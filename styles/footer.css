@@ -27,25 +27,40 @@ footer{
 }
 #redes-sociais{
     color:white;
-    padding: 3% 3%;
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
-#redes-sociais a > i {
+#redes-sociais > h4 {
+    margin: 0;
+    padding-bottom: 1rem;
+}
+#redes-sociais-img {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+#redes-sociais-img a {
+    padding: 0.7rem;
+    width: max-content;
+    height: max-content;
+}
+#redes-sociais-img a > i {
     display: inline-block;
     padding: 1px 1%;
     font-family: FontAwesome !important;
     font-size: 1.3333333333em !important;
 }
-#redes-sociais a{
-    padding: 0 4px;
-}
-#redes-sociais a:link{
+#redes-sociais-img a:link{
     color: rgb(190, 190, 190);
 }
-#redes-sociais a:visited{
+#redes-sociais-img a:visited{
     color: rgb(190, 190, 190);
 }
-#redes-sociais a > i::after{
+#redes-sociais-img a > i::after{
     content: none;
 }
 @media(max-width:664px){
