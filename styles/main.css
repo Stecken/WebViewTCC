@@ -147,10 +147,9 @@ div.buttonImage > a:hover:before{
 
 .integrantes {
     padding: 3rem 0 0 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows:  1fr;
 }
 
 .integ > img {
@@ -239,7 +238,7 @@ div.img-pessoa > a {
 
 div.img-pessoa > a > h3 {
     margin: 0;
-    font-size: 0.9rem;
+    font-size: 1.2rem;
 }
 
 img.pessoa-link-img {
@@ -268,6 +267,10 @@ div.img-pessoa:hover > a > img.pessoa-link-img {
     }
     div.img-pessoa > a {
         padding: 0;
+    }
+    .integrantes {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows:  repeat(2, 1fr);
     }
 }
 
@@ -332,6 +335,10 @@ div.img-pessoa:hover > a > img.pessoa-link-img {
         max-width: 7rem;
         max-height: 7rem;
     }
+    .integrantes {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows:  repeat(3, 1fr);
+    }
 }
 @media(max-width:664px){
     #sub-titulo {
@@ -344,11 +351,13 @@ div.img-pessoa:hover > a > img.pessoa-link-img {
         width: 90%;
     }
     .integrantes {
+        justify-content: center;
+        align-items: center;
         padding: 0rem 1rem 0 1rem;
     }
     .integ {
         padding: 1.5rem 0 0 0;
-        width: 35%;
+        width: 100%;
     }
     .integ > a > img {
         max-width: 7rem;
@@ -359,6 +368,10 @@ div.img-pessoa:hover > a > img.pessoa-link-img {
     .integ > a > img {
         max-width: 6rem;
         max-height: 6rem;
+    }
+    .integrantes {
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows:  repeat(6, 1fr);
     }
 }
 
