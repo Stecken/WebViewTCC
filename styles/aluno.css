@@ -15,10 +15,10 @@
 .div-image-aluno{
     margin: auto;
 }
-.image-aluno img{
+.image-aluno {
     padding-bottom: 1rem;
-    max-width: 300px; /*mudei 50*/
-    max-height: 300px; /*mudei 50*/
+    max-width: 16rem; /*mudei 50*/
+    max-height: 16rem; /*mudei 50*/
     width: auto;
     height: auto;
 }
