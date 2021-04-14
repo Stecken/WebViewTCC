@@ -11,6 +11,7 @@
 *{
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif !important;
+    scroll-behavior: smooth;
 }
 body{
     top: 0;
@@ -187,8 +188,22 @@ img.risco3:hover{
     }
 }
 @media(max-width:520px){
-    div.mesma-linha h1.titulo{
-        font-size: 19px;
-        align-self: stretch;
+    header > div.bonito > img#logo{
+        max-width: 2rem;
+        max-height: 2rem;
     }
+    #flecha-separa{
+        max-width: 2rem;
+        max-height: 100%;
+    }
+    header > div.bonito > div.mesma-linha > div.titulo-header > h1.titulo {
+        font-size: 0.95rem;
+    }
+    img.risco3 {
+        max-width: 1.5rem;
+        max-height: 1.5rem;
+    }
+}
+
+@media(max-width:400px){
 }
