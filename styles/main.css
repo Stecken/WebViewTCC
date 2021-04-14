@@ -218,6 +218,22 @@ div.monografia > a:before {
 	background-color: #1257ed !important;
 }
 
+img.pessoa-link-img {
+    visibility: hidden;
+    right: 2rem;
+    top: 1rem;
+    border: none !important;
+    position: absolute;
+    z-index: 2;
+    transition: all .3s linear;
+}
+
+/*Hover na pessoa, aparece o link*/
+img.img-pessoa:hover ~ img.pessoa-link-img {
+    visibility: visible;
+    transform: translateY(1rem);
+}
+
 @media(max-width:1080px) {
     .integ {
         padding: 1.5rem 3rem 0 3rem;
