@@ -7,18 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Fonte-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
-    
-    <!--font-awesome image-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
+    <!--font-awesome image-->
+
     <!--
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap" rel="stylesheet">
     -->
     <!---->
     <link rel="stylesheet" href="/styles/index.css">
     <link rel="stylesheet" href="/styles/mainSobre.css">
-    <link rel="stylesheet" href="/styles/footer.css">
     <link rel="stylesheet" href="/styles/navsobre.css">
+    <link rel="stylesheet" href="/styles/footer.css">
     <!--Jquery - Não usado-->
     <link rel="sortcut icon" type="imagem/x-icon" href="/files/images/gota.ico" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -40,11 +40,22 @@
         </div>
         <div class="menu">
             <a href="/" class="strong">Home</a>
-            <a href="/sobre" class="strong">Sobre</a>
+            <div class="dropdown">
+                <a href="/sobre" class="strong">Sobre</a>
+                <div class="dropdown-content">
+                    <a href="/sobre/alison" class="strong">Alison</a>
+                    <a href="/sobre/breno" class="strong">Breno</a>
+                    <a href="/sobre/paulo" class="strong">Paulo</a>
+                    <a href="/sobre/rafael" class="strong">Rafael</a>
+                    <a href="/sobre/samuel" class="strong">Samuel</a>
+                    <a href="/sobre/yuri" class="strong">Yuri</a>
+                </div>
+            </div>
             <a href="/dados" class="strong">Dados</a>
         </div>
         <div class="menu-mobile">
             <ul class="menu-ul-mobile">
+                <div id="linha"></div>
                 <li>
                     <a href="/" class="strong">Home</a>
                 </li>

@@ -23,6 +23,18 @@ body{
 }
 a {
     text-decoration: none;
+    padding: 0 1rem;
+    color: #000;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    transition: all .3s;
+	position: relative;
+	overflow: hidden;
+	z-index: 1;
 }
 header {
     z-index:2;
@@ -92,17 +104,24 @@ header > div.bonito > div.mesma-linha > div.titulo-header > h1.titulo {
     transition: opacity 1.5s ease-out;
     opacity: 0;
     padding: 0;
+    margin: 0 0 1rem 0;
 }
+
+div#linha{
+    width: 100%;
+    height: 1px;
+    margin: 0 0 1rem 0;
+	box-shadow: inset 0 -1rem 0 0 black;
+}
+
 .menu-mobile ul > li {
     width: 100%;
     margin: 0;
     padding: 10px 0;
-    display: block;
 }
 .menu-mobile ul > li > a {
+    width: 100% !important;
     color: #000;
-    display: block;
-    width: 100%;
     padding: 0;
 }
 .menu-mobile ul > li > a:visited {
@@ -112,6 +131,7 @@ header > div.bonito > div.mesma-linha > div.titulo-header > h1.titulo {
 .menu-mobile ul > li > a:hover {
     color: rgba(17, 17, 17, 0.7);
 }
+
 img.risco3 {
     display: none;
     transition: transform 0.7s;
@@ -127,10 +147,12 @@ img.risco3:hover{
 /**/
 .menu{
     display: flex;
+    align-items: center;
+    height: 4.6rem;
 }
 .menu a {
     font-family: 'Metropolis-Light', sans-serif !important;
-    padding: 0 15px;
+    padding: 0 2rem;
     font-size: 19px;
     text-decoration: none;
     color:#000;
@@ -142,6 +164,38 @@ img.risco3:hover{
 .menu a:visited{
     color:#000;
 }
+
+.dropdown {
+    height: 100%;
+    position: relative;
+    display: block;
+}
+
+.dropdown-content {
+    text-align: center;
+    display: none;
+    position: absolute;
+    background-color: #fafafa;
+    min-width: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    padding: 0.5rem 0;
+}
+
+.dropdown:hover .dropdown-content {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.dropdown:hover .dropdown-content:hover {
+    display: flex;
+    flex-direction: column;
+}
+
 @media(max-width:780px){
     .titulo-header {
         font-size: 1rem;
@@ -178,6 +232,7 @@ img.risco3:hover{
     }
     .menu-mobile{
         display: flex;
+        flex-direction: column;
         z-index:2;
     }
     .menu-mobile li {
@@ -185,6 +240,12 @@ img.risco3:hover{
     }
     .menu-logo{
         display:flex;
+    }
+
+    .menu-mobile ul.menu-ul-mobile{
+        list-style: none;
+        display: none;
+        flex-direction: column; 
     }
 }
 @media(max-width:520px){

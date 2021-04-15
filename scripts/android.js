@@ -9,7 +9,7 @@ function imgMenu() {
     state = !state;
     if(state){
         menu.style.transform = `rotate(${-90}deg)`;
-        menutagA.style.display = 'block';
+        menutagA.style.display = 'flex';
         menutagA.style.opacity = "1";
         menu_mobile.style.opacity = "1";
     }else{
