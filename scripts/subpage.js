@@ -38,6 +38,12 @@ const puxapage = (path) => {
     else if (windowPath == "/sobre/rafael" || windowPath == "/sobre/rafafael" || windowPath == "/sobre/fefel") {
         puxapage("/pages/subpages/rafael.html");
     }
+    else if (windowPath == "/sobre/elson") {
+        puxapage("/pages/subpages/elson.html");
+    }
+    else if (windowPath == "/sobre/pablo") {
+        puxapage("/pages/subpages/pablo.html");
+    }
     else {
         console.log("problemas");
     }

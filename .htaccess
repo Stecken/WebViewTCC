@@ -19,6 +19,8 @@ RewriteRule ^sobre/rafael?$ /pages/sobre.html [NC,L]
 RewriteRule ^sobre/samuel?$ /pages/sobre.html [NC,L]
 RewriteRule ^sobre/alison?$ /pages/sobre.html [NC,L]
 RewriteRule ^sobre/yuri?$ /pages/sobre.html [NC,L]
+RewriteRule ^sobre/pablo?$ /pages/sobre.html [NC,L]
+RewriteRule ^sobre/elson?$ /pages/sobre.html [NC,L]
 RewriteRule ^dados/?$ /pages/dados.html [NC,L]
 
 ErrorDocument 404 /pages/inexistente.html

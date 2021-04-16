@@ -46,6 +46,14 @@
             "destination": "/pages/sobre.html"
         },
         {
+            "source": "/sobre/pablo",
+            "destination": "/pages/sobre.html"
+        },
+        {
+            "source": "/sobre/elson",
+            "destination": "/pages/sobre.html"
+        },
+        {
             "source": "/dados",
             "destination": "/pages/dados.html"
         },
