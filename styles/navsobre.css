@@ -1,6 +1,6 @@
 #nav-principal {
     top: 4.5rem;
-    right: -5.8rem;
+    right: -6.5rem;
     z-index: 1;
     display: flex;
     flex-direction: column;
@@ -12,7 +12,7 @@
 
 #nav-principal:hover {
     background-color: transparent;
-    transform: translate(-5.8rem);
+    transform: translate(-6.5rem);
 }
 
 #nav-principal:hover > #ul-nav-principal{
@@ -94,10 +94,10 @@ ul.topico-nav > li > a {
 /**/
 @media(max-height: 600px){
     #nav-principal {
-        right: -16vh;
+        right: -15vh;
     }
     #nav-principal:hover {
-        transform: translate(-16vh);
+        transform: translate(-15vh);
     }
     .title-topico {
         padding: 1.5vh;
