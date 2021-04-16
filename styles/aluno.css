@@ -386,9 +386,18 @@ div.buttonImage > a:hover:before{
         align-self:flex-start;
     }
 
+    #pablo {
+        font-size: 1.3rem !important;
+    }
+
+    #pablo-title {
+        padding: 0 0.5rem !important;
+        font-size: 1.1rem !important;
+    }
+
 }
 
-@media(max-width:410px){
+@media(max-width:440px){
     .topic-home h2 {
         font-size: 1.4rem !important;
 
