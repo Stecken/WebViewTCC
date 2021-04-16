@@ -7,7 +7,7 @@ main.conteudo {
     z-index:1;
     width: 100%;
     height: max-content;
-    min-height: 1000px;
+    min-height: 700px !important;
     background-image: url(/files/images/homeBackGroundSemPassaroPrata.png);
     background-size: cover;
     background-position: 0% 40%;
@@ -20,9 +20,9 @@ main.conteudo {
     padding-bottom: 1rem;
 }
 
-@media(max-width:940px){
-}
-@media(max-width:800px){
-}
-@media(max-width:664px){
+@media(max-width:4000px){
+    main.conteudo {
+        height: max-content;
+        min-height: 45vw !important;
+    }
 }
