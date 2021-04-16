@@ -44,3 +44,24 @@ $(document).ready(() => {
     eitaNav = document.querySelector('.eita1');
     buttonNavAndroid.addEventListener('click', menuSobre);
 });
+
+/*
+* Js para criar novos elementos e depois função de Js para abrir ao clicar
+
+$(function () {
+
+    $('#off-canvas-nav .megamenu .dropdown-toggle').each(function () {
+        $(this).parent().append('<span class="open_dropdown"><i class="fa fa-sort-desc" aria-hidden="true"></i></span>');
+    });
+
+    $('#off-canvas-nav .open_dropdown').click(function (e) {
+        e.preventDefault();
+        var atual = $(this).parent().find('.dropdown-menu').css('display');
+        if (atual == "none") {
+            $(this).parent().find('.dropdown-menu').slideDown(500);
+        } else {
+            $(this).parent().find('.dropdown-menu').slideUp(500);
+        }
+    });
+
+});*/

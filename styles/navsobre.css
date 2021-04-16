@@ -1,112 +1,119 @@
-.conteudo{
-    display:flex !important;
-    flex-direction: row;
-    align-items: stretch;
-    height:100%;
-}
-.engloba-navtoda{
+#nav-principal {
+    top: 4.5rem;
+    right: -5.8rem;
+    z-index: 1;
     display: flex;
-    /*flex-grow: 2;*/
-    flex-basis: auto;
-    align-items: stretch;
-    /*flex: 1;*/
-    width: 70px;
-    min-height: 100%;
-    background-color: rgb(41, 153, 221);
-    transition: all 0.5s linear;
-    flex-shrink: 0;
-}
-.engloba-nav{
-    width: 100%;
+    flex-direction: column;
+    position: fixed;
     height: 100%;
-    /*padding: 10px 10px 10px 10px; /*mudei*/
-}
-.eita {
-    height: 100%;
-    width: 100%; /*mudei*/
-}
-.real-nav{
-    width: 100%;
-    opacity: 0;
-    display:block;
-    transition: all 0.5s linear;
-}
-.real-nav a{
-    width: 100%; /*mudei*/
-    display:block;
-    visibility: hidden;
-    color:rgb(255, 255, 255);
-    text-align: center;
-    padding: 10px 10px;
-}
-.real-nav a:hover{
-    background-color: aquamarine;
-}
-#img-sobre-real {
-    transition: transform 0.5s;
-    cursor:pointer;
-    /*filter: invert(100%);*/
-    max-width: 70px; /*mudei 50*/
-    max-height: 70px; /*mudei 50*/
-    width: auto;
-    height: auto;
-    margin: auto;
-    padding: 10px; /*mudei*/
-}
-.engloba-conteudo{
-    display: flex;
-    flex-grow: 1;
-    flex-basis: auto;
-    flex-shrink: 2;
-    padding: 10px 10px;
+    transition: all 0.75s linear;
+    background-color:#EEEEEE;
 }
 
-/*Android Nav*/
-.engloba-navtoda-mobile{
-    background-color:aquamarine;
-    width: 100%;
-    display:none;
+#nav-principal:hover {
+    background-color: transparent;
+    transform: translate(-5.8rem);
 }
-#img-sobre-real-android {
-    transition: transform 0.5s;
-    cursor:pointer;
-    /*filter: invert(100%);*/
-    max-width: 70px; /*mudei 50*/
-    max-height: 70px; /*mudei 50*/
+
+#nav-principal:hover > #ul-nav-principal{
+    opacity: 1;
+}
+
+#nav-principal:hover > #img-nav  {
+    opacity: 0;
+}
+
+#ul-nav-principal {
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+}
+
+
+
+div.nav-sobre-engloba {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.topico-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+ul.topico-nav > li {
+    width: 100%;
+    background-color: #EEEEEE;
+    padding: 0.4rem;
+}
+
+ul.topico-nav > li:hover {
+    background-color: #d4d4d4;
+}
+
+ul.topico-nav > li > a {
+    font-family: 'Metropolis-Light', sans-serif !important;
+}
+
+.title-topico {
+    font-family: 'Metropolis-Light', sans-serif !important;
+    padding: 0.8rem;
+    box-shadow:
+  0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+  0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+  0 12.5px 10px rgba(0, 0, 0, 0.06),
+  0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+  0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+  0 100px 80px rgba(0, 0, 0, 0.12);
+    text-align: center;
+    align-self: center;
+    width: 100%;
+    background-color: white;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+
+#img-nav {
+    position: absolute;
+    margin: 150% 0 auto 0;
+    align-self: flex-start;
+    max-width: 3.5rem;
+    max-height: 3.5rem;
+    min-width: 3.5rem;
+    min-height: 3.5rem;
     width: auto;
     height: auto;
-    margin: auto;
-    padding: 10px; /*mudei*/
+    opacity: 1;
 }
-.eita1 {
-    width: 100%; /*mudei*/
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 1s cubic-bezier(0, 1, 0, 1);
-}
+
 /**/
-@media(max-width:940px){
-    main{
-        display: block !important;
+@media(max-height: 600px){
+    #nav-principal {
+        right: -16vh;
     }
-    .conteudo{
-        display: block !important;
+    #nav-principal:hover {
+        transform: translate(-16vh);
     }
-    .engloba-navtoda{
+    .title-topico {
+        padding: 1.5vh;
+        font-size: 3.0vh;
+    }
+    ul.topico-nav > li > a {
+        font-size:2.4vh;
+    }
+
+}
+
+@media(max-width:780px) {
+    #nav-principal {
         display: none;
     }
-
-    /*Android Nav*/
-    .engloba-navtoda-mobile{
-        display:block;
-    }
-    .real-nav-mobile a{
-        display:block;
-        text-align: center;
-        padding: 10px 0px;
-    }
-    .real-nav-mobile a:hover{
-        background-color: rgb(90, 192, 158);
-    }
-    /**/
+}
+@media(max-width:940px){
+    
 }

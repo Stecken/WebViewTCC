@@ -21,6 +21,12 @@ body{
     font-family: 'Roboto', sans-serif !important;
     display: block;
 }
+
+ul, li {
+    padding: 0;
+    list-style-type: none;
+}
+
 a {
     text-decoration: none;
     padding: 0 1rem;
@@ -158,6 +164,9 @@ img.risco3:hover{
     color:#000;
     text-decoration: double;
 }
+#menu-desktop > a:last-child {
+    margin: 0 4rem 0 0;
+}
 .menu a:hover{
     color: rgba(34, 34, 34, 0.7);
 }
@@ -183,6 +192,7 @@ img.risco3:hover{
 
 .dropdown-content a {
     padding: 0.5rem 0;
+    font-size: 1rem;
 }
 
 .dropdown:hover .dropdown-content {
@@ -194,6 +204,155 @@ img.risco3:hover{
 .dropdown:hover .dropdown-content:hover {
     display: flex;
     flex-direction: column;
+}
+
+.dropdown-lvl2 {
+    height: 100%;
+    position: relative;
+    display: block;
+}
+
+.dropdown-lvl2:hover .lvl2 {
+    display: block !important;
+}
+
+.no-link {
+    cursor: default !important;
+}
+
+.lvl2 {
+    display: none !important;
+    margin: -30% 0 0 0;
+    left: 100%;
+    position: absolute;
+}
+
+#checkbox-lvl1 {
+    display: none;
+}
+
+#checkbox-lvl1:not(:checked) ~ div{
+    height: 0;
+    display: none;
+}
+
+#checkbox-lvl1:checked ~ div{
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 0;
+}
+
+
+div#div-lvl2-mobile > div {
+    height: 0;
+    width: 100%;
+    display: none;
+}
+
+div#div-lvl2-mobile > div > a {
+    width: 100%;
+    background-color: #e7e7e7;
+    font-family: 'Metropolis-Light', sans-serif !important;
+    font-size: 0.8rem;
+    padding: 1rem 0;
+}
+
+div#div-lvl2-mobile > div > a:hover {
+    background-color: #cacaca;
+}
+
+#checkbox-lvl2-1:not(:checked) ~ div#div-lvl3-1{
+    height: 0;
+    display: none;
+}
+
+#checkbox-lvl2-1:checked ~ div#div-lvl3-1{
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#checkbox-lvl2-2:not(:checked) ~ div#div-lvl3-2{
+    height: 0;
+    display: none;
+}
+
+#checkbox-lvl2-2:checked ~ div#div-lvl3-2{
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#checkbox-lvl2-3:not(:checked) ~ div#div-lvl3-3{
+    height: 0;
+    display: none;
+}
+
+#checkbox-lvl2-3:checked ~ div#div-lvl3-3{
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#checkbox-lvl2-4:not(:checked) ~ div#div-lvl3-4{
+    height: 0;
+    display: none;
+}
+
+#checkbox-lvl2-4:checked ~ div#div-lvl3-4{
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-lvl2-mobile {
+    display: none;
+}
+
+.link-lvl3-mobile {
+    display: none !important;
+    height: 0;
+}
+
+#checkbox-lvl1:checked ~ div > label.label-lvl2-mobile {
+    width: 100%;
+}   
+
+#checkbox-lvl1:checked ~ div > label.label-lvl2-mobile > a{
+    width: 100%;
+    z-index: 5;
+    background-color: #f1f1f1;
+    font-family: 'Metropolis-Light', sans-serif !important;
+    font-size: 0.9rem;
+    padding: 1rem 0;
+}
+
+#checkbox-lvl1:checked ~ div > label.label-lvl2-mobile > a:hover {
+    background-color: #cccccc;
+}
+
+.label-lvl1-mobile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+#link-lvl1-mobile {
+    width: max-content;
+    text-align: center;
 }
 
 @media(max-width:780px){

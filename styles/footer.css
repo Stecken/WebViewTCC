@@ -26,6 +26,7 @@ footer{
     color: white;
 }
 #redes-sociais{
+    z-index: 0;
     color:white;
     display: flex;
     flex-direction: column;
@@ -49,6 +50,7 @@ footer{
     height: max-content;
 }
 #redes-sociais-img a > i {
+    z-index: 0;
     display: inline-block;
     padding: 1px 1%;
     font-family: FontAwesome !important;

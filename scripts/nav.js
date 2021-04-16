@@ -1,5 +1,5 @@
 let buttonNav;
-let state1 = false;
+let state1 = true;
 let navReal;
 let NavToda;
 let NavTagA;
@@ -15,21 +15,17 @@ const navDisplay = () => {
     if(state1){
         buttonNav.style.transform = `rotate(${-90}deg)`;
         navReal.style.opacity = 1;
-        NavToda.style.width = "200px";
+        navReal.style.width = "max-content";
         percorre(NavTagA, 'visible');
     }
     else {
         buttonNav.style.transform = `rotate(${-180}deg)`;
         navReal.style.opacity = 0;
-        NavToda.style.width = "70px";
+        navReal.style.width = "3.5rem";
         percorre(NavTagA, 'hidden');
     }
 }
 
 $(document).ready(() => {
-    buttonNav = document.querySelector('#img-sobre-real');
-    navReal = document.querySelector('.real-nav');
-    NavToda = document.querySelector('.engloba-navtoda');
-    NavTagA = document.querySelectorAll('.real-nav a');
     buttonNav.addEventListener('click', navDisplay);
 });
