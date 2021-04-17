@@ -326,9 +326,9 @@ div.buttonImage > a:hover:before{
 
 @media(max-width:540px){
     .topic-home h2 {
-        font-size: 1.7rem;
+        font-size: 1.6rem;
 
-        padding: 0 2rem;
+        padding: 0 1.8rem;
         color: black;
     }
 

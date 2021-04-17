@@ -355,6 +355,29 @@ div#div-lvl2-mobile > div > a:hover {
     text-align: center;
 }
 
+@media screen and (max-height: 400px){
+    div.titulo-header {
+        font-size: 2vh;
+    }
+
+    img#logo {
+        max-width: 2.5rem;
+        max-height: 2.5rem;
+    }
+
+    div.titulo-header > h1 {
+        font-size: 1.2rem !important;
+    }
+
+    .menu {
+        height: 3.6rem !important;
+    }
+    .menu a {
+        padding: 0 2rem;
+        font-size:0.8rem;
+    }
+}
+
 @media(max-width:780px){
     .titulo-header {
         font-size: 1rem;
@@ -409,19 +432,23 @@ div#div-lvl2-mobile > div > a:hover {
 }
 @media(max-width:520px){
     header > div.bonito > img#logo{
-        max-width: 2rem;
-        max-height: 2rem;
+        max-width: 2.2rem;
+        max-height: 2.2rem;
     }
     #flecha-separa{
         max-width: 2rem;
         max-height: 100%;
     }
-    header > div.bonito > div.mesma-linha > div.titulo-header > h1.titulo {
-        font-size: 0.95rem;
+    header > div.bonito > div.mesma-linha > div.titulo-header > h1 {
+        font-size: 0.95rem !important;
     }
     img.risco3 {
         max-width: 1.5rem;
         max-height: 1.5rem;
+    }
+    .mesma-linha{
+        width: 65%;
+        justify-content:space-around;
     }
 }
 

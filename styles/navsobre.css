@@ -80,7 +80,7 @@ ul.topico-nav > li > a {
 
 #img-nav {
     position: absolute;
-    margin: 150% 0 auto 0;
+    margin: 38vh 0 auto 0;
     align-self: flex-start;
     max-width: 3.5rem;
     max-height: 3.5rem;
@@ -106,7 +106,6 @@ ul.topico-nav > li > a {
     ul.topico-nav > li > a {
         font-size:2.4vh;
     }
-
 }
 
 @media(max-width:780px) {
