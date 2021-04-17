@@ -54,7 +54,7 @@
             "destination": "/pages/sobre.html"
         },
         {
-            "source": "/sobre/monografia",
+            "source": "/sobre/monografia/web/viewer.html",
             "destination": "/sobre/monografia/web/viewer.html"
         },
         {
@@ -85,6 +85,14 @@
         {
             "source": "/files/(.*)",
             "destination": "/403.html"
+        },
+        {
+            "source": "/sobre/monografia",
+            "destination": "/404.html"
+        },
+        {
+            "source": "/sobre/monografia/(.*)",
+            "destination": "/404.html"
         }
     ]
 }
