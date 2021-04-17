@@ -54,6 +54,10 @@
             "destination": "/pages/sobre.html"
         },
         {
+            "source": "/sobre/monografia",
+            "destination": "/sobre/monografia/web/viewer.html"
+        },
+        {
             "source": "/dados",
             "destination": "/pages/dados.html"
         },
