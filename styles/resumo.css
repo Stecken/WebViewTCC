@@ -114,6 +114,11 @@ div.render-3d {
     width: 100%;
 }
 
+#dados-resumo {
+    padding: 0 !important;
+}
+
+
 @media(max-width:1280px){
     div.images-resumo {
         display: flex;

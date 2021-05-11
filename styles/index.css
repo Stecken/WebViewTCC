@@ -159,7 +159,7 @@ img.risco3:hover{
 .menu a {
     font-family: 'Metropolis-Light', sans-serif !important;
     padding: 0 2rem;
-    font-size: 19px;
+    font-size: 17px;
     text-decoration: none;
     color:#000;
     text-decoration: double;
@@ -173,7 +173,9 @@ img.risco3:hover{
 .menu a:visited{
     color:#000;
 }
-
+#padding-index {
+    margin: 0 8rem 0 0;
+}
 .dropdown {
     height: 100%;
     position: relative;
@@ -192,7 +194,7 @@ img.risco3:hover{
 
 .dropdown-content a {
     padding: 0.5rem 0;
-    font-size: 1rem;
+    font-size: 0.85rem;
 }
 
 .dropdown:hover .dropdown-content {
@@ -245,6 +247,25 @@ img.risco3:hover{
     padding: 0.5rem 0;
 }
 
+/* dado */
+
+#checkbox-lvl1-dado {
+    display: none;
+}
+
+#checkbox-lvl1-dado:not(:checked) ~ div{
+    height: 0;
+    display: none;
+}
+
+#checkbox-lvl1-dado:checked ~ div{
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 0;
+}
 
 div#div-lvl2-mobile > div {
     height: 0;
@@ -316,6 +337,39 @@ div#div-lvl2-mobile > div > a:hover {
     align-items: center;
 }
 
+/* dado */
+
+div#div-lvl2-dado-mobile > div {
+    height: 0;
+    width: 100%;
+    display: none;
+}
+
+div#div-lvl2-dado-mobile > div > a {
+    width: 100%;
+    background-color: #e7e7e7;
+    font-family: 'Metropolis-Light', sans-serif !important;
+    font-size: 0.8rem;
+    padding: 1rem 0;
+}
+
+div#div-lvl2-dado-mobile > div > a:hover {
+    background-color: #cacaca;
+}
+
+#checkbox-lvl2-1-dado:not(:checked) ~ div#div-lvl3-1-dado{
+    height: 0;
+    display: none;
+}
+
+#checkbox-lvl2-1-dado:checked ~ div#div-lvl3-1-dado{
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .input-lvl2-mobile {
     display: none;
 }
@@ -323,6 +377,35 @@ div#div-lvl2-mobile > div > a:hover {
 .link-lvl3-mobile {
     display: none !important;
     height: 0;
+}
+
+/* dado */
+
+#checkbox-lvl1-dado:checked ~ div > label.label-lvl2-mobile > a:hover {
+    background-color: #cccccc;
+}
+
+#checkbox-lvl1-dado:checked ~ div > label.label-lvl2-mobile {
+    width: 100%;
+}   
+
+#checkbox-lvl1-dado:checked ~ div > label.label-lvl2-mobile > a{
+    width: 100%;
+    z-index: 5;
+    background-color: #f1f1f1;
+    font-family: 'Metropolis-Light', sans-serif !important;
+    font-size: 0.9rem;
+    padding: 1rem 0;
+}
+
+#checkbox-lvl1-dado:checked ~ div > label.label-lvl2-mobile > a:hover {
+    background-color: #cccccc;
+}
+
+/*lv1*/
+
+#checkbox-lvl1:checked ~ div > label.label-lvl2-mobile > a:hover {
+    background-color: #cccccc;
 }
 
 #checkbox-lvl1:checked ~ div > label.label-lvl2-mobile {
@@ -341,6 +424,7 @@ div#div-lvl2-mobile > div > a:hover {
 #checkbox-lvl1:checked ~ div > label.label-lvl2-mobile > a:hover {
     background-color: #cccccc;
 }
+
 
 .label-lvl1-mobile {
     display: flex;

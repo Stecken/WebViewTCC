@@ -7,18 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Fonte-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
     <!--font-awesome image-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <!--
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap" rel="stylesheet">
     -->
     <!---->
     <link rel="stylesheet" href="/styles/index.css">
     <link rel="stylesheet" href="/styles/mainSobre.css">
-    <link rel="stylesheet" href="/styles/footer.css">
     <link rel="stylesheet" href="/styles/navsobre.css">
-    <link rel="stylesheet" href="/styles/table.css">
+    <link rel="stylesheet" href="/styles/footer.css">
+    <link rel="stylesheet" href="/styles/resumo.css">
     <link rel="stylesheet" href="/styles/mainDados.css">
     <!--Jquery - Não usado-->
     <link rel="sortcut icon" type="imagem/x-icon" href="/files/images/gota.ico" />
@@ -39,57 +40,190 @@
                 <img src="/files/images/menu_logo.png" alt="" class="risco3">
             </div>
         </div>
-        <div class="menu">
+        <div class="menu" id="menu-desktop">
             <a href="/" class="strong">Home</a>
-            <a href="/sobre" class="strong">Sobre</a>
-            <a href="/dados" class="strong">Dados</a>
+            <div class="dropdown">
+                <a href="/sobre" class="strong">Sobre</a>
+                <div class="dropdown-content">
+                    <div class="dropdown-lvl2">
+                        <a class="strong">Integrantes</a>
+                        <div class="dropdown-content lvl2">
+                            <a href="/sobre/alison" class="strong">Alison</a>
+                            <a href="/sobre/breno" class="strong">Breno</a>
+                            <a href="/sobre/paulo" class="strong">Paulo</a>
+                            <a href="/sobre/rafael" class="strong">Rafael</a>
+                            <a href="/sobre/samuel" class="strong">Samuel</a>
+                            <a href="/sobre/yuri" class="strong">Yuri</a>
+                        </div>
+                    </div>
+                    <div class="dropdown-lvl2">
+                        <a class="strong no-link">Orientadores</a>
+                        <div class="dropdown-content lvl2">
+                            <a href="/sobre/elson" class="strong">Elson Avallone</a>
+                            <a href="/sobre/pablo" class="strong">Pablo Sampaio</a>
+                        </div>
+                    </div>
+                    <div class="dropdown-lvl2">
+                        <a class="strong no-link">Trabalho</a>
+                        <div class="dropdown-content lvl2">
+                            <a href="/sobre/monografia/web/viewer.html" target="_blank" class="strong">Monografia</a>
+                            <a href="/sobre/breno" class="strong">Defesa</a>
+                        </div>
+                    </div>
+                    <div class="dropdown-lvl2">
+                        <a class="strong no-link">Site</a>
+                        <div class="dropdown-content lvl2">
+                            <a href="/sobre/alison" class="strong">Informações</a>
+                            <a href="/sobre/breno" class="strong">Contato</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown" id="padding-index">
+                <a href="/dados" class="strong">Dados</a>
+                <div class="dropdown-content">
+                    <div class="dropdown-lvl2">
+                        <a class="strong">Gráficos</a>
+                        <div class="dropdown-content lvl2">
+                            <a href="/dados/temperatura" class="strong">Temperaturas</a>
+                            <a href="/dados/vazao" class="strong">Vazão</a>
+                            <a href="/dados/luminosidade" class="strong">Luminosidade</a>
+                            <a href="/dados/radiacao" class="strong">Radiação</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="menu-mobile">
             <ul class="menu-ul-mobile">
+                <div id="linha"></div>
                 <li>
                     <a href="/" class="strong">Home</a>
                 </li>
                 <li>
-                    <a href="/sobre" class="strong">Sobre</a>
+                    <input type="checkbox" id="checkbox-lvl1">
+                    <label for="checkbox-lvl1" class="label-lvl1-mobile">
+                        <a href="/sobre" class="strong" id="link-lvl1-mobile">Sobre</a>
+                    </label>
+                    <div id="div-lvl2-mobile">
+                        <input type="checkbox" id="checkbox-lvl2-1" class="input-lvl2-mobile">
+                        <label for="checkbox-lvl2-1" class="label-lvl2-mobile">
+                            <a class="strong" class="link-lvl2-mobile">Autores</a>
+                        </label>
+                        <div id="div-lvl3-1">
+                            <a href="/sobre/alison" class="strong">Alison</a>
+                            <a href="/sobre/breno" class="strong">Breno</a>
+                            <a href="/sobre/paulo" class="strong">Paulo</a>
+                            <a href="/sobre/rafael" class="strong">Rafael</a>
+                            <a href="/sobre/samuel" class="strong">Samuel</a>
+                            <a href="/sobre/yuri" class="strong">Yuri</a>
+                        </div>
+                        <input type="checkbox" id="checkbox-lvl2-2" class="input-lvl2-mobile">
+                        <label for="checkbox-lvl2-2" class="label-lvl2-mobile">
+                            <a class="strong" class="link-lvl2-mobile">Orientadores</a>
+                        </label>
+                        <div id="div-lvl3-2">
+                            <a href="/sobre/elson" class="strong" class="link-lvl3-mobile">Elson Avallone</a>
+                            <a href="/sobre/pablo" class="strong" class="link-lvl3-mobile">Pablo Sampaio</a>
+                        </div>
+                        <input type="checkbox" id="checkbox-lvl2-3" class="input-lvl2-mobile">
+                        <label for="checkbox-lvl2-3" class="label-lvl2-mobile">
+                            <a class="strong" class="link-lvl2-mobile">O Trabalho</a>
+                        </label>
+                        <div id="div-lvl3-3">
+                            <a href="/sobre/monografia/web/viewer.html" target="_blank" class="strong"
+                                class="link-lvl3-mobile">Monografia</a>
+                            <a href="/sobre/alison" class="strong" class="link-lvl3-mobile">Defesa</a>
+                        </div>
+                        <input type="checkbox" id="checkbox-lvl2-4" class="input-lvl2-mobile">
+                        <label for="checkbox-lvl2-4" class="label-lvl2-mobile">
+                            <a class="strong" class="link-lvl2-mobile">O Site</a>
+                        </label>
+                        <div id="div-lvl3-4">
+                            <a href="/sobre/alison" class="strong" class="link-lvl3-mobile">Informações</a>
+                            <a href="/sobre/alison" class="strong" class="link-lvl3-mobile">Contato</a>
+                        </div>
+                    </div>
                 </li>
                 <li>
-                    <a href="/dados" class="strong">Dados</a>
+                    <input type="checkbox" id="checkbox-lvl1-dado">
+                    <label for="checkbox-lvl1-dado" class="label-lvl1-mobile">
+                        <a href="/dados" class="strong" id="link-lvl1-mobile">Dados</a>
+                    </label>
+                    <div id="div-lvl2-dado-mobile">
+                        <input type="checkbox" id="checkbox-lvl2-1-dado" class="input-lvl2-mobile">
+                        <label for="checkbox-lvl2-1-dado" class="label-lvl2-mobile">
+                            <a class="strong" class="link-lvl2-mobile">Gráficos</a>
+                        </label>
+                        <div id="div-lvl3-1-dado">
+                            <a href="/dados/temperatura" class="strong">Temperaturas</a>
+                            <a href="/dados/vazao" class="strong">Vazão</a>
+                            <a href="/dados/luminosidade" class="strong">Luminosidade</a>
+                            <a href="/dados/radiacao" class="strong">Radiação</a>
+                        </div>
+                    </div>
                 </li>
             </ul>
         </div>
     </header>
-    <div class="div-image-central">
-        <h1 class="titulo sumido">Procurando os dados do projeto?<br>Aqui está!</h1>
-    </div>
-    <main>
-        <div class="dados-inform">
-            <table
-                summary="A nossa loja, Metal & Cia,  oferece uma grande variedade de instrumentos semi-novos em ótimo estado de conservação">
-                <caption>Catálogo da Metal & Cia</caption>
-                <thead>
-                    <tr>
-                        <th colspan="4">Tabela de preços</th>
-                    </tr>
-                </thead>
-                <tfoot>
-                    <tr>
-                        <td colspan="4">Visite nossa loja</td>
-                    </tr>
-                </tfoot>
-                <tbody>
-                    <tr>
-                        <td rowspan="2"> Seminovos</td>
-                        <td>Ex1</td>
-                        <td>Ex1</td>
-                        <td>Ex1</td>
-                    </tr>
-                    <tr>
-                        <td>Ex1</td>
-                        <td>Ex1</td>
-                        <td>Ex1</td>
-                    </tr>
-                </tbody>
-            </table>
+    <main class="conteudo">
+        <div class="engloba-conteudo">
+            <div class="nav-sobre-engloba">
+                <nav id="nav-principal" class="nav-dados">
+                    <img src="/files/images/gota.png" id="img-nav">
+                    <ul id="ul-nav-principal">
+                        <li>
+                            <ul class="topico-nav">
+                                <span class="title-topico">Gráficos</span>
+                                <li>
+                                    <a href="/dados/temperatura">Temperaturas</a>
+                                </li>
+                                <li>
+                                    <a href="/dados/vazao">Vazão</a>
+                                </li>
+                                <li>
+                                    <a href="/dados/luminosidade">Luminosidade</a>
+                                </li>
+                                <li>
+                                    <a href="/dados/radiacao">Radiação</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="engloba-conteudo">
+                <div id="le-pagina">
+                    <div class="engloba-conteudo-resumo" id="dados-resumo">
+                        <div class="engloba-resumo">
+                            <div class="engloba-resumo">
+                                <div class="topic-home">
+                                    <div class="traco-hori"></div>
+                                    <h2 id="paulo-title">Dados Automáticos</h2>
+                                </div>
+                                <p class="aluno-p">
+                                    Desenvolvemos um sistema no qual possibilita a visualização dos dados dos sensores de forma dinâmica.
+                                    Acesse os gráficos dinâmicos a partir dos links abaixo.
+                                </p>
+                            </div>
+                            <div class="engloba-links-dados">
+                                <div class="buttonImage monografia">
+                                    <a href="/dados/temperatura" target="_blank">Temperaturas</a>
+                                </div>
+                                <div class="buttonImage monografia">
+                                    <a href="/dados/vazao" target="_blank">Vazão</a>
+                                </div>
+                                <div class="buttonImage monografia">
+                                    <a href="/dados/luminosidade" target="_blank">Luminosidade</a>
+                                </div>
+                                <div class="buttonImage monografia">
+                                    <a href="/dados/radiacao" target="_blank">Radiação</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
     <footer>
@@ -100,19 +234,21 @@
             </div>
             <div id="redes-sociais">
                 <h4>Contato</h4>
-                <a href="https://www.instagram.com/yuri.martinsbr/" target="_blank" id="link">
-                    <i class="fa fa-instagram"></i>
-                </a>
-                <a href="https://www.facebook.com/yuri.martins.54738" target="_blank">
-                    <i class="fa fa-facebook"></i>
-                </a>
+                <div id="redes-sociais-img">
+                    <a href="https://www.instagram.com/yuri.martinsbr/" target="_blank" id="link">
+                        <i class="fa fa-instagram"></i>
+                    </a>
+                    <a href="https://www.facebook.com/yuri.martins.54738" target="_blank">
+                        <i class="fa fa-facebook"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </footer>
     <script src="/scripts/nav.js"></script>
-    <script src="/scripts/subpage.js"></script>
     <script src="/scripts/android.js"></script>
     <!--Puxar dados API-->
     <script src="/scripts/puxa.js"></script>
 </body>
+
 </html>

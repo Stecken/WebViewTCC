@@ -1,3 +1,27 @@
-.div-image-central{
-    background-image: url(/files/images/mar-min.jpg) !important;
+.engloba-links-dados {
+    display:flex;
+    flex-direction: row;
+    justify-content:space-between;
+    width: 70%;
+}
+
+@media(max-width:1020px) {
+    .aluno-p{
+        width: 80%;
+    }
+    .engloba-links-dados {
+        flex-direction:column;
+    }
+}
+
+@media(max-width:960px) {
+    .engloba-links-dados {
+        flex-direction:column;
+    }
+}
+
+@media(max-width:760px) {
+    #dados-resumo {
+        padding: 1rem !important;
+    }
 }

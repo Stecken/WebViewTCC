@@ -23,11 +23,6 @@
     <link rel="sortcut icon" type="imagem/x-icon" href="/files/images/gota.ico" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Concentrador Solar</title>
-
-    <!--Programação - Libs-->
-    <script src="/scripts/nav.js"></script>
-    <script src="/scripts/subpage.js"></script>
-    <script src="/scripts/android.js"></script>
 </head>
 
 <body>
@@ -83,15 +78,15 @@
                 </div>
             </div>
             <div class="dropdown" id="padding-index">
-                <a href="/dados" class="strong">Dados</a>
+                <a href="/sobre" class="strong">Dados</a>
                 <div class="dropdown-content">
                     <div class="dropdown-lvl2">
                         <a class="strong">Gráficos</a>
                         <div class="dropdown-content lvl2">
-                            <a href="/dados/temperatura" class="strong">Temperaturas</a>
-                            <a href="/dados/vazao" class="strong">Vazão</a>
-                            <a href="/dados/luminosidade" class="strong">Luminosidade</a>
-                            <a href="/dados/radiacao" class="strong">Radiação</a>
+                            <a href="/sobre/alison" class="strong">Temperaturas</a>
+                            <a href="/sobre/breno" class="strong">Vazão</a>
+                            <a href="/sobre/paulo" class="strong">Luminosidade</a>
+                            <a href="/sobre/rafael" class="strong">Radiação</a>
                         </div>
                     </div>
                 </div>
@@ -171,63 +166,33 @@
     </header>
     <main class="conteudo">
         <div class="nav-sobre-engloba">
-            <nav id="nav-principal">
+            <nav id="nav-principal" class="nav-dados">
                 <img src="/files/images/gota.png" id="img-nav">
                 <ul id="ul-nav-principal">
                     <li>
                         <ul class="topico-nav">
-                            <span class="title-topico">Autores</span>
+                            <span class="title-topico">Gráficos</span>
                             <li>
-                                <a href="/sobre/alison">Alison</a>
+                                <a href="/sobre/alison">Temperaturas</a>
                             </li>
                             <li>
-                                <a href="/sobre/breno">Breno</a>
+                                <a href="/sobre/breno">Vazão</a>
                             </li>
                             <li>
-                                <a href="/sobre/paulo">Paulo</a>
+                                <a href="/sobre/paulo">Luminosidade</a>
                             </li>
                             <li>
-                                <a href="/sobre/rafael">Rafael</a>
+                                <a href="/sobre/rafael">Radiação</a>
                             </li>
                             <li>
-                                <a href="/sobre/samuel">Samuel</a>
-                            </li>
-                            <li>
-                                <a href="/sobre/yuri">Yuri</a>
-                            </li>
-                        </ul>
-                        <ul class="topico-nav">
-                            <span class="title-topico">Orientadores</span>
-                            <li>
-                                <a href="/sobre/elson">Elson Avallone</a>
-                            </li>
-                            <li>
-                                <a href="/sobre/pablo">Pablo Sampaio</a>
-                            </li>
-                        </ul>
-                        <ul class="topico-nav">
-                            <span class="title-topico">O Trabalho</span>
-                            <li>
-                                <a href="/sobre/monografia/web/viewer.html" target="_blank">Monografia</a>
-                            </li>
-                            <li>
-                                <a href="/sobre/alison">Defesa</a>
-                            </li>
-                        </ul>
-                        <ul class="topico-nav">
-                            <span class="title-topico">O Site</span>
-                            <li>
-                                <a href="/sobre/alison">Informações</a>
-                            </li>
-                            <li>
-                                <a href="/sobre/alison">Contato</a>
+                                <a href="/sobre/fefel">Rafael</a>
                             </li>
                         </ul>
                     </li>
                 </ul>
             </nav>
         </div>
-        
+
         <div class="engloba-conteudo">
             <p id="response"></p>
             <div id="le-pagina">
@@ -253,6 +218,11 @@
             </div>
         </div>
     </footer>
+    <script src="/scripts/nav.js"></script>
+    <script src="/scripts/subdata.js"></script>
+    <script src="/scripts/android.js"></script>
+    <!--Puxar dados API-->
+    <script src="/scripts/puxa.js"></script>
 </body>
 
 </html>

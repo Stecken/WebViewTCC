@@ -74,7 +74,20 @@
                     </div>
                 </div>
             </div>
-            <a href="/dados" class="strong">Dados</a>
+            <div class="dropdown" id="padding-index">
+                <a href="/dados" class="strong">Dados</a>
+                <div class="dropdown-content">
+                    <div class="dropdown-lvl2">
+                        <a class="strong">Gráficos</a>
+                        <div class="dropdown-content lvl2">
+                            <a href="/dados/temperatura" class="strong">Temperaturas</a>
+                            <a href="/dados/vazao" class="strong">Vazão</a>
+                            <a href="/dados/luminosidade" class="strong">Luminosidade</a>
+                            <a href="/dados/radiacao" class="strong">Radiação</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="menu-mobile">
             <ul class="menu-ul-mobile">
@@ -113,7 +126,8 @@
                             <a class="strong" class="link-lvl2-mobile">O Trabalho</a>
                         </label>
                         <div id="div-lvl3-3">
-                            <a href="/sobre/monografia/web/viewer.html" target="_blank" class="strong" class="link-lvl3-mobile">Monografia</a>
+                            <a href="/sobre/monografia/web/viewer.html" target="_blank" class="strong"
+                                class="link-lvl3-mobile">Monografia</a>
                             <a href="/sobre/alison" class="strong" class="link-lvl3-mobile">Defesa</a>
                         </div>
                         <input type="checkbox" id="checkbox-lvl2-4" class="input-lvl2-mobile">
@@ -127,7 +141,22 @@
                     </div>
                 </li>
                 <li>
-                    <a href="/dados" class="strong">Dados</a>
+                    <input type="checkbox" id="checkbox-lvl1-dado">
+                    <label for="checkbox-lvl1-dado" class="label-lvl1-mobile">
+                        <a href="/dados" class="strong" id="link-lvl1-mobile">Dados</a>
+                    </label>
+                    <div id="div-lvl2-dado-mobile">
+                        <input type="checkbox" id="checkbox-lvl2-1-dado" class="input-lvl2-mobile">
+                        <label for="checkbox-lvl2-1-dado" class="label-lvl2-mobile">
+                            <a class="strong" class="link-lvl2-mobile">Gráficos</a>
+                        </label>
+                        <div id="div-lvl3-1-dado">
+                            <a href="/dados/temperatura" class="strong">Temperaturas</a>
+                            <a href="/dados/vazao" class="strong">Vazão</a>
+                            <a href="/dados/luminosidade" class="strong">Luminosidade</a>
+                            <a href="/dados/radiacao" class="strong">Radiação</a>
+                        </div>
+                    </div>
                 </li>
             </ul>
         </div>
