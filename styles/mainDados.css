@@ -5,6 +5,17 @@
     width: 70%;
 }
 
+div.topic-home {
+    align-items: center;
+    justify-content:center;
+}
+
+h2#paulo-title {
+    align-self: center;
+    padding: 0.4rem 0.7rem;
+    font-size: 1.6rem;
+}
+
 @media(max-width:1020px) {
     .aluno-p{
         width: 80%;

@@ -241,7 +241,7 @@ div.render-3d {
 
     #paulo-title {
         font-size: 2rem;
-        padding: 0 1rem;
+        padding: 0.6rem 0.3rem !important;
     }
 
     .topic-home h2 {
