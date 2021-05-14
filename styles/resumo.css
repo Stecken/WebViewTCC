@@ -245,6 +245,7 @@ div.render-3d {
     }
 
     .topic-home h2 {
+        /*height: max-content !important;*/
         padding: 0 1.3rem;
     }
 }

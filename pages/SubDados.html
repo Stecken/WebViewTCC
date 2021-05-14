@@ -14,11 +14,16 @@
     <!--
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap" rel="stylesheet">
     -->
-    <!---->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.min.js"
+        integrity="sha512-VMsZqo0ar06BMtg0tPsdgRADvl0kDHpTbugCBBrL55KmucH6hP9zWdLIWY//OTfMnzz6xWQRxQqsUFefwHuHyg=="
+        crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/styles/index.css">
     <link rel="stylesheet" href="/styles/mainSobre.css">
     <link rel="stylesheet" href="/styles/navsobre.css">
     <link rel="stylesheet" href="/styles/footer.css">
+    <link rel="stylesheet" href="/styles/resumo.css">
+    <link rel="stylesheet" href="/styles/graphic.css">
+    <link rel="stylesheet" href="/styles/nvd3_181.css">
     <!--Jquery - Não usado-->
     <link rel="sortcut icon" type="imagem/x-icon" href="/files/images/gota.ico" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -83,10 +88,10 @@
                     <div class="dropdown-lvl2">
                         <a class="strong">Gráficos</a>
                         <div class="dropdown-content lvl2">
-                            <a href="/sobre/alison" class="strong">Temperaturas</a>
-                            <a href="/sobre/breno" class="strong">Vazão</a>
-                            <a href="/sobre/paulo" class="strong">Luminosidade</a>
-                            <a href="/sobre/rafael" class="strong">Radiação</a>
+                            <a href="/dados/temperatura" class="strong">Temperaturas</a>
+                            <a href="/dados/vazao" class="strong">Vazão</a>
+                            <a href="/dados/luminosidade" class="strong">Luminosidade</a>
+                            <a href="/dados/radiacao" class="strong">Radiação</a>
                         </div>
                     </div>
                 </div>
@@ -173,19 +178,16 @@
                         <ul class="topico-nav">
                             <span class="title-topico">Gráficos</span>
                             <li>
-                                <a href="/sobre/alison">Temperaturas</a>
+                                <a href="/dados/temperatura">Temperaturas</a>
                             </li>
                             <li>
-                                <a href="/sobre/breno">Vazão</a>
+                                <a href="/dados/vazao">Vazão</a>
                             </li>
                             <li>
-                                <a href="/sobre/paulo">Luminosidade</a>
+                                <a href="/dados/luminosidade">Luminosidade</a>
                             </li>
                             <li>
-                                <a href="/sobre/rafael">Radiação</a>
-                            </li>
-                            <li>
-                                <a href="/sobre/fefel">Rafael</a>
+                                <a href="/dados/radiacao">Radiação</a>
                             </li>
                         </ul>
                     </li>
@@ -194,8 +196,26 @@
         </div>
 
         <div class="engloba-conteudo">
-            <p id="response"></p>
             <div id="le-pagina">
+                <div class="engloba-resumo">
+                    <div class="topic-home">
+                        <div class="traco-hori"></div>
+                        <h2 id="paulo-title" class="title-dados"></h2>
+                    </div>
+                    <p class="aluno-p">
+                        
+                    </p>
+                </div>
+                <div>
+                    <div class="buttonImage monografia" id="control-graphic">
+                        <a id="bt-graphic">Habilitar Gráfico</a>
+                    </div>
+                    <div class="panel-body">
+                        <div id="chart">
+                            <canvas id="myChart" class="not-active"></canvas>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
@@ -221,6 +241,7 @@
     <script src="/scripts/nav.js"></script>
     <script src="/scripts/subdata.js"></script>
     <script src="/scripts/android.js"></script>
+    <script src="/scripts/graphic.js"></script>
     <!--Puxar dados API-->
     <script src="/scripts/puxa.js"></script>
 </body>

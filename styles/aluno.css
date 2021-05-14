@@ -362,9 +362,13 @@ div.buttonImage > a:hover:before{
 }
 
 @media(max-width: 440px){
+    .div-aluno-engloba > div.div-aluno > div > h3 {
+        height: max-content;
+    }
+
     .topic-home h2 {
         font-size: 1.4rem !important;
-
+        height: max-content !important;
         padding: 0 1.5rem;
     }
 
