@@ -5,6 +5,7 @@ let menutagA;
 /*Menu Sobre Android*/
 let buttonNavAndroid;
 let eitaNav;
+let seta
 function imgMenu() {
     state = !state;
     if(state){
@@ -32,7 +33,31 @@ const menuSobre = () => {
     }
 }
 
+let stateArrow = false;
+
+function giraSeta() {
+    // Check to see if the counter has been initialized
+    if (typeof giraSeta.state == 'undefined') {
+        // It has not... perform the initialization
+        giraSeta.state = false;
+    }
+    giraSeta.state = !giraSeta.state;
+    
+    if (giraSeta.state == true) {
+        this.children[0].style.transform = `rotate(${-270}deg)`;
+    }
+    else {
+        this.children[0].style.transform = `rotate(${-360}deg)`;
+    }
+    
+}
+
 $(document).ready(() => {
+    seta = document.querySelectorAll('.label-lvl1-mobile');
+    seta.forEach((element) => {
+        element.addEventListener('click', giraSeta);
+    });
+
     menu = document.querySelector('.risco3');
     menu_mobile = document.querySelector('.menu-mobile');
     menutagA = document.querySelector('.menu-ul-mobile');
@@ -40,28 +65,11 @@ $(document).ready(() => {
     /*
         Menu Sobre Config
     */
+   
     buttonNavAndroid = document.querySelector('#img-sobre-real-android');
     eitaNav = document.querySelector('.eita1');
     buttonNavAndroid.addEventListener('click', menuSobre);
+
+    
+    
 });
-
-/*
-* Js para criar novos elementos e depois função de Js para abrir ao clicar
-
-$(function () {
-
-    $('#off-canvas-nav .megamenu .dropdown-toggle').each(function () {
-        $(this).parent().append('<span class="open_dropdown"><i class="fa fa-sort-desc" aria-hidden="true"></i></span>');
-    });
-
-    $('#off-canvas-nav .open_dropdown').click(function (e) {
-        e.preventDefault();
-        var atual = $(this).parent().find('.dropdown-menu').css('display');
-        if (atual == "none") {
-            $(this).parent().find('.dropdown-menu').slideDown(500);
-        } else {
-            $(this).parent().find('.dropdown-menu').slideUp(500);
-        }
-    });
-
-});*/
