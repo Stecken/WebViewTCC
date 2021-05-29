@@ -22,10 +22,6 @@ RewriteRule ^sobre/yuri?$ /pages/sobre.html [NC,L]
 RewriteRule ^sobre/pablo?$ /pages/sobre.html [NC,L]
 RewriteRule ^sobre/elson?$ /pages/sobre.html [NC,L]
 RewriteRule ^dados/?$ /pages/dados.html [NC,L]
-RewriteRule ^dados/temperatura?$ /pages/SubDados.html [NC,L]
-RewriteRule ^dados/vazao?$ /pages/SubDados.html [NC,L]
-RewriteRule ^dados/luminosidade?$ /pages/SubDados.html [NC,L]
-RewriteRule ^dados/radiacao?$ /pages/SubDados.html [NC,L]
 
 ErrorDocument 404 /pages/inexistente.html
 ErrorDocument 403 /pages/erro.html

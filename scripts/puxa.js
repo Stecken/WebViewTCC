@@ -1,25 +1,14 @@
-let buttonControlGraphic, stateBt = false, g1 = [], g2 = [], obj;
+let buttonControlGraphic, stateBt = false;
+let vet = [];
+let chart;
+let vetFim = []; //data
 
 var urlencoded = new URLSearchParams();
 urlencoded.append("option", "tudo");
 
-var myData = [
-    {
-        key: "T1",
-        values: [],
-        color: '#ff7f0e'
-    }
-];
-
-
-$(document).ready(() => {
-    buttonControlGraphic = document.querySelector('#control-graphic');
-    buttonControlGraphic.addEventListener('click', controlGraphic);
-});
-
 
 let onChangeGraph;
-
+/*
 const controlGraphic = () => {
     stateBt = !stateBt;
     
@@ -42,6 +31,119 @@ const controlGraphic = () => {
         $("canvas#myChart").removeClass("active");
     }
 }
+*/
+
+let options = {
+    chart: {
+        type: 'line',
+        events: {
+            load: async function () {
+
+                // set up the updating of the chart each second
+                var series = this.series[0];
+                setInterval(function () {
+                    var x = (new Date()).getTime() // current time
+                    //let dados = puxaData();
+                    var y = Math.round(Math.random() * 100);
+                    series.addPoint([x, y], true, true);
+                }, 5000);
+            }
+        }
+    },
+
+    time: {
+        useUTC: false
+    },
+
+    yAxis: {
+        title: {
+            text: "Temperature (C)"
+        },
+        pointStart: 0,
+        plotlines: [{ value: 0, width: 1, "color": "#808080" }]
+    },
+    tooltip: {
+        valueSuffix: "C°"
+    },
+    legend: {
+        layout: "vertical",
+        align: "right",
+        verticalAlign: "middle",
+        borderWidth: 0
+    },
+
+    title: {
+        text: 'Live random data'
+    },
+
+    exporting: {
+        enabled: false
+    },
+
+    series: [{
+        name: 'T1',
+        data: vetFim
+    }],
+    // series: [{
+    //     name: 'Random data',
+    //     data: (function () {
+    //         // generate an array of random data
+    //         var data = [],
+    //             time = (new Date()).getTime(),
+    //             i;
+
+    //         for (i = -999; i <= 0; i += 1) {
+    //             data.push([
+    //                 time + i * 1000,
+    //                 Math.round(Math.random() * 100)
+    //             ]);
+    //         }
+    //         console.log(data);
+    //         return data;
+    //     }())
+    // }],
+    plotOptions: {
+        bar: {
+            colorByPoint: true
+        },
+        series: {
+            zones: [{
+                color: '#4CAF50',
+                value: 0
+            }, {
+                color: '#8BC34A',
+                value: 10
+            }, {
+                color: '#CDDC39',
+                value: 20
+            }, {
+                color: '#CDDC39',
+                value: 30
+            }, {
+                color: '#FFEB3B',
+                value: 40
+            }, {
+                color: '#FFEB3B',
+                value: 50
+            }, {
+                color: '#FFC107',
+                value: 60
+            }, {
+                color: '#FF9800',
+                value: 70
+            }, {
+                color: '#FF5722',
+                value: 80
+            }, {
+                color: '#F44336',
+                value: 90
+            }, {
+                color: '#F44336',
+                value: Number.MAX_VALUE
+            }]
+        }
+    }
+};
 
 
 const deleteGraph = () => {
@@ -49,11 +151,28 @@ const deleteGraph = () => {
     $('#chart').append('<canvas id="myChart" width="400" height="400"><canvas>');
 }
 
-const puxaData = () => {
+$(document).ready(function () {
+    let d = new Date();
+    $('#time-hour').text(d.getHours());
+    if(d.getMinutes() < 10) {
+        $('#time-minute').text(`${0}${d.getMinutes()}`);
+    }
+    else {
+        $('#time-minute').text(d.getMinutes());
+    }
+    
+    $('#time-day').text(d.getDate());
+    $('#time-month').text(d.getMonth() + 1); // porque o retorno começa de "0"
+    $('#time-year').text(d.getFullYear());
+
+    puxaData();
+});
+
+const puxaData = async () => {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
-    
+
 
     var requestOptions = {
         method: 'POST',
@@ -62,28 +181,76 @@ const puxaData = () => {
         redirect: 'follow'
     };
 
-    fetch("http://concentradorsolar.000webhostapp.com/api", requestOptions)
+    let fim = await fetch("http://concentradorsolar.000webhostapp.com/api", requestOptions)
         .then(response => response.json())
         .then((result) => {
             console.log(result);
-            let cont = 1;
             let resultInvert = result["content"].reverse();
             resultInvert.forEach((element) => {
-                console.log(element[0].temperaturas[0]);
-                myData[0].values.push({ "x": cont, "y": parseFloat(element[0].temperaturas[0]) });
-                //myData[1].values.push({ x: cont, y: parseFloat((element[cont].temperaturas[cont]) - 1) });
-                //.push({ "x": cont, "y": parseFloat(element[0].temperaturas[0]) });
-                //g2.push({ "x": cont, "y": parseInt((element[cont].temperaturas[cont]) - 1) });
-                if (element[0].id == 7) {
-                    console.log("brincadeira" + cont);
-                }
-                cont = cont + 1;
+                vet.push(parseInt(element[0].temperaturas[0]) + getRandomIntInclusive(1, 499));
             });
+            var time = (new Date()).getTime();
+            vet.forEach((element) => {
+                vetFim.push([
+                    time + Math.random() * 100 ,
+                    Math.round(element + Math.random() * 100)
+                ]);
+            });
+            console.log(vetFim)
+            chart = new Highcharts.Chart('chart', options);
         })
         .catch(error => console.log('error', error));
+        
+    
+
+    return fim;
 }
 
+// const puxaData = async () => {
+//     var myHeaders = new Headers();
+//     myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
+
+
+//     var requestOptions = {
+//         method: 'POST',
+//         headers: myHeaders,
+//         body: urlencoded,
+//         redirect: 'follow'
+//     };
+
+//     let fim = await fetch("http://concentradorsolar.000webhostapp.com/api", requestOptions)
+//         .then(response => response.json())
+//         .then((result) => {
+//             console.log(result);
+//             let resultInvert = result["content"].reverse();
+//             resultInvert.forEach((element) => {
+//                 vet.push(parseInt(element[0].temperaturas[0]) + getRandomIntInclusive(1, 499));
+//             });
+//             return vet;
+//         })
+//         .catch(error => console.log('error', error));
+//     var data = [],
+//         time = (new Date()).getTime(),
+//         i;
+//     fim.forEach((element) => {
+//         for (i = -100; i <= 0; i += 1) {
+//             data.push([
+//                 time + i * 1000,
+//                 Math.round(element + Math.random() * 100)
+//             ]);
+//         }
+//     });
+
+//     return data;
+// }
+
+
+// We recreate instead of using chart update to make sure the loaded CSV
+// and such is completely gone.
+
+
+/*
 let myChart;
 
 let drawChart = () => {
@@ -175,42 +342,9 @@ function updateGraph() {
         })
         .catch(error => console.log('error', error));
 }
-
+*/
 function getRandomIntInclusive(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return parseInt(Math.floor(Math.random() * (max - min + 1)) + min);
 }
-
-/*
-let drawChart = function () {
-    nv.addGraph(function () {
-        var chart = nv.models.lineChart()
-            .margin({ left: 100 })  //Adjust chart margins to give the x-axis some breathing room.
-            .useInteractiveGuideline(true)  //We want nice looking tooltips and a guideline!
-            .showLegend(true)       //Show the legend, allowing users to turn on/off line series.
-            .showYAxis(true)        //Show the y-axis
-            .showXAxis(true)        //Show the x-axis
-            ;
-
-        chart.xAxis     //Chart x-axis settings
-            .axisLabel('Time (ms)')
-            .tickFormat(d3.format(',r'));
-
-        chart.yAxis     //Chart y-axis settings
-            .axisLabel('Temperatura (C°)')
-            .tickFormat(d3.format('.02f'));
-
-        //var myData = sinAndCos();   //You need data...
-        console.log(myData)
-        obj = d3.select('#chart svg')    //Select the <svg> element you want to render the chart in.
-            .datum(myData)         //Populate the <svg> element with chart data...
-            .call(chart);          //Finally, render the chart!
-
-        //Update the chart when window resizes.
-        nv.utils.windowResize(function () { chart.update() });
-        return chart;
-    });
-
-};
-*/

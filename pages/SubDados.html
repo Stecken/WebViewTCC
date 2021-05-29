@@ -14,16 +14,17 @@
     <!--
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap" rel="stylesheet">
     -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.min.js"
-        integrity="sha512-VMsZqo0ar06BMtg0tPsdgRADvl0kDHpTbugCBBrL55KmucH6hP9zWdLIWY//OTfMnzz6xWQRxQqsUFefwHuHyg=="
-        crossorigin="anonymous"></script>
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/export-data.js"></script>
+    <!--highcharts-->
     <link rel="stylesheet" href="/styles/index.css">
     <link rel="stylesheet" href="/styles/mainSobre.css">
     <link rel="stylesheet" href="/styles/navsobre.css">
     <link rel="stylesheet" href="/styles/footer.css">
     <link rel="stylesheet" href="/styles/resumo.css">
     <link rel="stylesheet" href="/styles/graphic.css">
-    <link rel="stylesheet" href="/styles/nvd3_181.css">
+    <link rel="stylesheet" href="/styles/mainDados.css">
     <!--Jquery - Não usado-->
     <link rel="sortcut icon" type="imagem/x-icon" href="/files/images/gota.ico" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -174,49 +175,32 @@
         </div>
     </header>
     <main class="conteudo">
-        <div class="nav-sobre-engloba">
-            <nav id="nav-principal" class="nav-dados">
-                <img src="/files/images/gota.png" id="img-nav">
-                <ul id="ul-nav-principal">
-                    <li>
-                        <ul class="topico-nav">
-                            <span class="title-topico">Gráficos</span>
-                            <li>
-                                <a href="/dados/temperatura">Temperaturas</a>
-                            </li>
-                            <li>
-                                <a href="/dados/vazao">Vazão</a>
-                            </li>
-                            <li>
-                                <a href="/dados/luminosidade">Luminosidade</a>
-                            </li>
-                            <li>
-                                <a href="/dados/radiacao">Radiação</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-
         <div class="engloba-conteudo">
             <div id="le-pagina">
-                <div class="engloba-resumo">
-                    <div class="topic-home">
-                        <div class="traco-hori"></div>
-                        <h2 id="paulo-title" class="title-dados"></h2>
-                    </div>
-                    <p class="aluno-p">
-                        
-                    </p>
-                </div>
                 <div>
-                    <div class="buttonImage monografia" id="control-graphic">
-                        <a id="bt-graphic">Habilitar Gráfico</a>
-                    </div>
+                    <!-- begin toggle markup	 -->
+                    
+                    <label class="toggle" for="uniqueID">
+                        <input type="checkbox" class="toggle__input" id="uniqueID" />
+                        <span class="toggle-track">
+                            <span class="toggle-indicator">
+                                <!-- 	This check mark is optional	 -->
+                                <span class="checkMark">
+                                    <svg viewBox="0 0 24 24" id="ghq-svg-check" role="presentation" aria-hidden="true">
+                                        <path
+                                            d="M9.86 18a1 1 0 01-.73-.32l-4.86-5.17a1.001 1.001 0 011.46-1.37l4.12 4.39 8.41-9.2a1 1 0 111.48 1.34l-9.14 10a1 1 0 01-.73.33h-.01z">
+                                        </path>
+                                    </svg>
+                                </span>
+                            </span>
+                        </span>
+                        Enabled toggle label
+                    </label>
+                    
+                    <!-- end toggle markup	 -->
                     <div class="panel-body">
                         <div id="chart">
-                            <canvas id="myChart" class="not-active"></canvas>
+                            
                         </div>
                     </div>
                 </div>

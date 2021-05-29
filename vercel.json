@@ -61,22 +61,6 @@
             "source": "/dados",
             "destination": "/pages/dados.html"
         },
-        {
-            "source": "/dados/temperatura",
-            "destination": "/pages/SubDados.html"
-        },
-        {
-            "source": "/dados/vazao",
-            "destination": "/pages/SubDados.html"
-        },
-        {
-            "source": "/dados/luminosidade",
-            "destination": "/pages/SubDados.html"
-        },
-        {
-            "source": "/dados/radiacao",
-            "destination": "/pages/SubDados.html"
-        },
 
         {
             "source": "/scripts",
