@@ -8,30 +8,7 @@ urlencoded.append("option", "tudo");
 
 
 let onChangeGraph;
-/*
-const controlGraphic = () => {
-    stateBt = !stateBt;
-    
-    if(stateBt) {
-        $("#bt-graphic").text("Desabilitar Gráfico");
-        $("canvas#myChart").addClass("active");
-        $("canvas#myChart").removeClass("not-active");
-        //puxaData();
-        drawChart();
-        onChangeGraph = setInterval(() => {
-            updateGraph();
-        }, 5000);
-    }
-    else {
-        clearInterval(onChangeGraph);
-        deleteGraph();
-        $("#bt-graphic").text("Habilitar Gráfico");
 
-        $("canvas#myChart").addClass("not-active");
-        $("canvas#myChart").removeClass("active");
-    }
-}
-*/
 
 let options = {
     chart: {
@@ -57,7 +34,7 @@ let options = {
 
     yAxis: {
         title: {
-            text: "Temperature (C)"
+            text: "Temperatura (C)"
         },
         pointStart: 0,
         plotlines: [{ value: 0, width: 1, "color": "#808080" }]
@@ -84,24 +61,6 @@ let options = {
         name: 'T1',
         data: vetFim
     }],
-    // series: [{
-    //     name: 'Random data',
-    //     data: (function () {
-    //         // generate an array of random data
-    //         var data = [],
-    //             time = (new Date()).getTime(),
-    //             i;
-
-    //         for (i = -999; i <= 0; i += 1) {
-    //             data.push([
-    //                 time + i * 1000,
-    //                 Math.round(Math.random() * 100)
-    //             ]);
-    //         }
-    //         console.log(data);
-    //         return data;
-    //     }())
-    // }],
     plotOptions: {
         bar: {
             colorByPoint: true
@@ -165,6 +124,22 @@ $(document).ready(function () {
     $('#time-month').text(d.getMonth() + 1); // porque o retorno começa de "0"
     $('#time-year').text(d.getFullYear());
 
+    // 
+
+    onChangeDataSensor();
+
+    onChangePeriodo();
+
+    onChangeInputDate();
+
+    onChangeInputTypeGraphic();
+
+    checkAllInputsData();
+
+    //
+
+    $('div#button-realiza-consulta').click(doRequestQueryAPI());
+
     puxaData();
 });
 
@@ -206,143 +181,161 @@ const puxaData = async () => {
     return fim;
 }
 
-// const puxaData = async () => {
-//     var myHeaders = new Headers();
-//     myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
-
-
-
-//     var requestOptions = {
-//         method: 'POST',
-//         headers: myHeaders,
-//         body: urlencoded,
-//         redirect: 'follow'
-//     };
-
-//     let fim = await fetch("http://concentradorsolar.000webhostapp.com/api", requestOptions)
-//         .then(response => response.json())
-//         .then((result) => {
-//             console.log(result);
-//             let resultInvert = result["content"].reverse();
-//             resultInvert.forEach((element) => {
-//                 vet.push(parseInt(element[0].temperaturas[0]) + getRandomIntInclusive(1, 499));
-//             });
-//             return vet;
-//         })
-//         .catch(error => console.log('error', error));
-//     var data = [],
-//         time = (new Date()).getTime(),
-//         i;
-//     fim.forEach((element) => {
-//         for (i = -100; i <= 0; i += 1) {
-//             data.push([
-//                 time + i * 1000,
-//                 Math.round(element + Math.random() * 100)
-//             ]);
-//         }
-//     });
-
-//     return data;
-// }
-
-
-// We recreate instead of using chart update to make sure the loaded CSV
-// and such is completely gone.
-
-
-/*
-let myChart;
-
-let drawChart = () => {
-    const DATA_COUNT = 7;
-    const NUMBER_CFG = { count: DATA_COUNT, min: -100, max: 100 };
-
-    const labels = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-    const data = {
-        labels: labels,
-        datasets: [
-            {
-                label: 'Dataset 1',
-                data: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-                borderColor: "red",
-                backgroundColor: "red",
-            },
-            {
-                label: 'Dataset 1',
-                data: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-                borderColor: "blue",
-                backgroundColor: "blue",
-            }
-        ]
-    };
-    // </block:setup>
-
-    // <block:config:0>
-    const config = {
-        type: 'line',
-        data: data,
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            elements: {
-                line: {
-                    borderWidth: 2,
-                    capBezierPoints: false
+const onChangeDataSensor = () => {
+    const stateValue = ["temperatura", "vazao", "vento", "irradiancia"];
+    let equalElement = false;
+    $('#slct').change(function () {
+        checkAllInputsData();
+        resetCheckButtons();
+        stateValue.forEach((element) => {
+            if (element == $(this).val()) {
+                equalElement = true;
+                $('.quant-sensores-div').css('display', 'flex');
+                
+                if ($(this).val() == "temperatura") {
+                    $('#temp-sensor').css('display', 'flex');
+                    $('#vazao-sensor').css('display', 'none');
+                    $('#vento-sensor').css('display', 'none');
+                    $('#irradiancia-sensor').css('display', 'none');
                 }
-            },
-            plugins: {
-                legend: {
-                    position: 'top'
-                },
-                title: {
-                    display: true,
-                    text: 'Chart.js Line Chart'
+                else if ($(this).val() == "vazao") {
+                    $('#vazao-sensor').css('display', 'flex');
+                    $('#temp-sensor').css('display', 'none');
+                    $('#vento-sensor').css('display', 'none');
+                    $('#irradiancia-sensor').css('display', 'none');
                 }
-            },
-            scales: {
-                y: {
-                    suggestedMin: 0,
-                    suggestedMax: 500
+                else if ($(this).val() == "vento") {
+                    $('#vento-sensor').css('display', 'flex');
+                    $('#temp-sensor').css('display', 'none');
+                    $('#vazao-sensor').css('display', 'none');
+                    $('#irradiancia-sensor').css('display', 'none');
+                }
+                else if ($(this).val() == "irradiancia"){
+                    $('#irradiancia-sensor').css('display', 'flex');
+                    $('#temp-sensor').css('display', 'none');
+                    $('#vazao-sensor').css('display', 'none');
+                    $('#vento-sensor').css('display', 'none');
+                }
+                else {
+                    $('.quant-sensores-div').css('display', 'none');
                 }
             }
-        },
-    };
-    var ctx = document.getElementById('myChart').getContext('2d');
-    myChart = new Chart(ctx, config);
-    // </block:config>
+        });
+
+        if (equalElement == false) {
+            $('.quant-sensores-div').css('display', 'none');
+        }
+    });
 }
 
-function updateGraph() {
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+function resetCheckButtons() {
+    let nodes = document.querySelectorAll('input.inp-cbx');
 
-
-
-    var requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        body: urlencoded,
-        redirect: 'follow'
-    };
-
-    fetch("http://concentradorsolar.000webhostapp.com/api", requestOptions)
-        .then(response => response.json())
-        .then((result) => {
-            console.log(result);
-            let vet = [[], []];
-            let resultInvert = result["content"].reverse();
-            resultInvert.forEach((element) => {
-                vet[0].push(parseInt(element[0].temperaturas[0]) + getRandomIntInclusive(1, 499));
-                vet[1].push(parseInt(element[0].temperaturas[1]) + getRandomIntInclusive(1, 499));
-            });
-            myChart.data.datasets.forEach((dataset, i) => {
-                dataset.data = vet[i];
-            });
-            myChart.update();
-        })
-        .catch(error => console.log('error', error));
+    for (let i = 0; i < nodes.length; i++) {
+        nodes[i].checked = false;
+    }
 }
-*/
+
+const onChangePeriodo = () => {
+    const stateValue = ["ult5min", "ult30min", "ult1h", "ult2h", "ult5h", "ult10h", "ult24h", "custom"];
+    let equalElement = false;
+    $('#slct1').change(function () {
+        checkAllInputsData();
+        stateValue.forEach((element) => {
+            if (element == $(this).val()) {
+                equalElement = true;
+                if ($(this).val() == "custom") {
+                    $('.engloba-input-customizado').css('display', 'flex');
+                }
+                else {
+                    $('.engloba-input-customizado').css('display', 'none');
+                    resetInputDate();
+                }
+            }
+        });
+
+        if (equalElement == false) {
+            $('.engloba-input-customizado').css('display', 'none');
+        }
+    });
+}
+
+const onInputDateSucced = () => {
+    let initialDate = $('#initialDate').val();
+    let endDate = $('#endDate').val();
+    if (initialDate === "" || endDate === "") {
+        return "error";
+    }
+    let date1 = new Date(initialDate.replace(/-/g, "/"));
+    var date2 = new Date(endDate.replace(/-/g, "/"));
+    var timeDiff = Math.abs(date2.getTime() - date1.getTime()); // retorna o parâmetro como modulo de x
+    console.log(`TimeDiff ${timeDiff}`);
+    let diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+    console.log(`TimeDays ${diffDays}`);
+    return diffDays;
+}
+
+
+const onChangeInputDate = () => {
+    $('#initialDate, #endDate').change(function () {
+        checkAllInputsData();
+        if (onInputDateSucced() <= 3) {
+            $('div.reso').css('display', 'flex');
+            $('div.engloba-info').css('display', 'none');
+            if(onInputDateSucced() == 1) {
+                $('.select-data-1').css('display', 'flex');
+                $('.select-data-2').css('display', 'none');
+                $('.select-data-3').css('display', 'none');
+            }
+            else if (onInputDateSucced() == 2) {
+                $('.select-data-2').css('display', 'flex');
+                $('.select-data-1').css('display', 'none');
+                $('.select-data-3').css('display', 'none');
+            }
+            else if (onInputDateSucced() == 3) {
+                $('.select-data-3').css('display', 'flex');
+                $('.select-data-2').css('display', 'none');
+                $('.select-data-1').css('display', 'none');
+            }
+        }
+        else if (onInputDateSucced() == "error") {
+            $('div.reso').css('display', 'none');    
+            $('div.engloba-info').css('display', 'none');
+        }
+        else {
+            $('div.reso').css('display', 'none');
+            $('div.engloba-info').css('display', 'flex');
+        }
+    });
+}
+
+const onChangeInputTypeGraphic = () => {
+    $('#slct2').change(function () {
+        checkAllInputsData();
+    })
+}
+
+const checkAllInputsData = () => {
+    if ($('#slct').val() !== null && $('#slct1').val() !== null && $('#slct2').val() !== null) {
+        console.log("a");
+        $('div#button-realiza-consulta').removeClass('disabled');
+    }
+    else {
+        $('div#button-realiza-consulta').addClass('disabled');
+        return false;
+    }
+}
+
+const doRequestQueryAPI = () => {
+    checkAllInputsData();
+}
+
+function resetInputDate() {
+    $('#initialDate').val("");
+    $('#endDate').val("");
+    $('div.engloba-info').css('display', 'none');
+}
+
 function getRandomIntInclusive(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);

@@ -219,13 +219,10 @@
                                     <label class="select" for="slct">
                                         <select id="slct" required="required">
                                             <option value="" disabled="disabled" selected="selected">Lista de Seleção</option>
-                                            <option value="#">One</option>
-                                            <option value="#">Two</option>
-                                            <option value="#">Three</option>
-                                            <option value="#">Four</option>
-                                            <option value="#">Five</option>
-                                            <option value="#">Six</option>
-                                            <option value="#">Seven</option>
+                                            <option value="temperatura">Temperatura</option>
+                                            <option value="vazao">Vazão</option>
+                                            <option value="vento">Velocidade do Vento</option>
+                                            <option value="irradiancia">Irradiância Solar</option>
                                         </select>
                                         <svg>
                                             <use xlink:href="#select-arrow-down"></use>
@@ -241,25 +238,172 @@
                             </div>
                             <div class="engloba-quant-sensores">
                                 <h4>Exibir dados dos sensores</h4>
-                                <div>
-                                    <div>
-                                        
+                                <div class="quant-sensores-div">
+                                    <div class="sensor" id="temp-sensor">
+                                        <input class="inp-cbx" id="t1" type="checkbox" />
+                                        <label class="cbx" for="t1">
+                                            <span>
+                                                <svg width="12px" height="10px">
+                                                    <use xlink:href="#check"></use>
+                                                </svg>
+                                            </span>
+                                            <span>T1</span>
+                                        </label>
+                                        <input class="inp-cbx" id="t2" type="checkbox" />
+                                        <label class="cbx" for="t2">
+                                            <span>
+                                                <svg width="12px" height="10px">
+                                                    <use xlink:href="#check"></use>
+                                                </svg>
+                                            </span>
+                                            <span>T2</span>
+                                        </label>
+                                        <input class="inp-cbx" id="t3" type="checkbox" />
+                                        <label class="cbx" for="t3">
+                                            <span>
+                                                <svg width="12px" height="10px">
+                                                    <use xlink:href="#check"></use>
+                                                </svg>
+                                            </span>
+                                            <span>T3</span>
+                                        </label>
+                                        <input class="inp-cbx" id="t4" type="checkbox" style="display: none" />
+                                        <label class="cbx" for="t4">
+                                            <span>
+                                                <svg width="12px" height="10px">
+                                                    <use xlink:href="#check"></use>
+                                                </svg>
+                                            </span>
+                                            <span>T4</span>
+                                        </label>
+                                        <input class="inp-cbx" id="t5" type="checkbox" style="display: none" />
+                                        <label class="cbx" for="t5">
+                                            <span>
+                                                <svg width="12px" height="10px">
+                                                    <use xlink:href="#check"></use>
+                                                </svg>
+                                            </span>
+                                            <span>T5</span>
+                                        </label>
+                                        <input class="inp-cbx" id="t6" type="checkbox" style="display: none" />
+                                        <label class="cbx" for="t6">
+                                            <span>
+                                                <svg width="12px" height="10px">
+                                                    <use xlink:href="#check"></use>
+                                                </svg>
+                                            </span>
+                                            <span>T6</span>
+                                        </label>
+                                        <input class="inp-cbx" id="t7" type="checkbox" style="display: none" />
+                                        <label class="cbx" for="t7">
+                                            <span>
+                                                <svg width="12px" height="10px">
+                                                    <use xlink:href="#check"></use>
+                                                </svg>
+                                            </span>
+                                            <span>T7</span>
+                                        </label>
+                                        <input class="inp-cbx" id="t8" type="checkbox" style="display: none" />
+                                        <label class="cbx" for="t8">
+                                            <span>
+                                                <svg width="12px" height="10px">
+                                                    <use xlink:href="#check"></use>
+                                                </svg>
+                                            </span>
+                                            <span>T8</span>
+                                        </label>
+                                        <input class="inp-cbx" id="t9" type="checkbox" style="display: none" />
+                                        <label class="cbx" for="t9">
+                                            <span>
+                                                <svg width="12px" height="10px">
+                                                    <use xlink:href="#check"></use>
+                                                </svg>
+                                            </span>
+                                            <span>T9</span>
+                                        </label>
+                                        <input class="inp-cbx" id="t10" type="checkbox" style="display: none" />
+                                        <label class="cbx" for="t10">
+                                            <span>
+                                                <svg width="12px" height="10px">
+                                                    <use xlink:href="#check"></use>
+                                                </svg>
+                                            </span>
+                                            <span>T10</span>
+                                        </label>
+                                        <!--SVG Sprites-->
+                                        <svg class="inline-svg">
+                                            <symbol id="check" viewbox="0 0 12 10">
+                                                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                            </symbol>
+                                        </svg>
+                                    </div>
+                                    <div class="sensor" id="vazao-sensor">
+                                        <input class="inp-cbx" id="vazao" type="checkbox" style="display: none" />
+                                        <label class="cbx" for="vazao">
+                                            <span>
+                                                <svg width="12px" height="10px">
+                                                    <use xlink:href="#check"></use>
+                                                </svg>
+                                            </span>
+                                            <span>V1</span>
+                                        </label>
+                                        <!--SVG Sprites-->
+                                        <svg class="inline-svg">
+                                            <symbol id="check" viewbox="0 0 12 10">
+                                                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                            </symbol>
+                                        </svg>
+                                    </div>
+                                    <div class="sensor" id="vento-sensor">
+                                        <input class="inp-cbx" id="vento" type="checkbox" style="display: none" />
+                                        <label class="cbx" for="vento">
+                                            <span>
+                                                <svg width="12px" height="10px">
+                                                    <use xlink:href="#check"></use>
+                                                </svg>
+                                            </span>
+                                            <span>AN1</span>
+                                        </label>
+                                        <!--SVG Sprites-->
+                                        <svg class="inline-svg">
+                                            <symbol id="check" viewbox="0 0 12 10">
+                                                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                            </symbol>
+                                        </svg>
+                                    </div>
+                                    <div class="sensor" id="irradiancia-sensor">
+                                        <input class="inp-cbx" id="irradiancia" type="checkbox" style="display: none" />
+                                        <label class="cbx" for="irradiancia">
+                                            <span>
+                                                <svg width="12px" height="10px">
+                                                    <use xlink:href="#check"></use>
+                                                </svg>
+                                            </span>
+                                            <span>IR1</span>
+                                        </label>
+                                        <!--SVG Sprites-->
+                                        <svg class="inline-svg">
+                                            <symbol id="check" viewbox="0 0 12 10">
+                                                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                            </symbol>
+                                        </svg>
                                     </div>
                                 </div>
                             </div>
                             <div class="engloba-select">
                                 <h4>Periodo de tempo</h4>
                                 <div class="select-data">
-                                    <label class="select" for="slct">
-                                        <select id="slct" required="required">
+                                    <label class="select" for="slct1">
+                                        <select id="slct1" required="required">
                                             <option value="" disabled="disabled" selected="selected">Lista de Seleção</option>
-                                            <option value="#">One</option>
-                                            <option value="#">Two</option>
-                                            <option value="#">Three</option>
-                                            <option value="#">Four</option>
-                                            <option value="#">Five</option>
-                                            <option value="#">Six</option>
-                                            <option value="#">Seven</option>
+                                            <option value="ult5min">Últimos 5 minutos</option>
+                                            <option value="ult30min">Últimos 30 minutos</option>
+                                            <option value="ult1h">Última hora</option>
+                                            <option value="ult2h">Últimas 2 horas</option>
+                                            <option value="ult5h">Últimas 5 horas</option>
+                                            <option value="ult10h">Últimas 10 horas</option>
+                                            <option value="ult24h">Últimas 24 horas</option>
+                                            <option value="custom">Seleção Customizada</option>
                                         </select>
                                         <svg>
                                             <use xlink:href="#select-arrow-down"></use>
@@ -272,20 +416,87 @@
                                         </symbol>
                                     </svg>
                                 </div>
+                                <div class="engloba-input-customizado">
+                                    <div class="input-date-custom">
+                                        <label for="initialDate">Data Inicial</label>
+                                        <input type="date" name="dateofbirth" id="initialDate">
+                                    </div>
+                                    <div class="input-date-custom">
+                                        <label for="endDate">Data Final</label>
+                                        <input type="date" name="dateofbirth" id="endDate">
+                                    </div>
+                                    <div class="reso">
+                                        <h4>Resolução</h4>
+                                        <div class="select-data-1">
+                                            <label class="select" for="slct-date1">
+                                                <select id="slct-date1" required="required">
+                                                    <option value="1min">1 minuto</option>
+                                                    <option value="2min">2 minutos</option>
+                                                    <option value="3min">3 minutos</option>
+                                                </select>
+                                                <svg>
+                                                    <use xlink:href="#select-arrow-down"></use>
+                                                </svg>
+                                            </label>
+                                            <!-- SVG Sprites-->
+                                            <svg class="sprites">
+                                                <symbol id="select-arrow-down" viewbox="0 0 10 6">
+                                                    <polyline points="1 1 5 5 9 1"></polyline>
+                                                </symbol>
+                                            </svg>
+                                        </div>
+                                        <div class="select-data-2">
+                                            <label class="select" for="slct-date2">
+                                                <select id="slct-date2" required="required">
+                                                    <option value="5min">5 minutos</option>
+                                                    <option value="10min">10 minutos</option>
+                                                    <option value="30min">30 minutos</option>
+                                                </select>
+                                                <svg>
+                                                    <use xlink:href="#select-arrow-down"></use>
+                                                </svg>
+                                            </label>
+                                            <!-- SVG Sprites-->
+                                            <svg class="sprites">
+                                                <symbol id="select-arrow-down" viewbox="0 0 10 6">
+                                                    <polyline points="1 1 5 5 9 1"></polyline>
+                                                </symbol>
+                                            </svg>
+                                        </div>
+                                        <div class="select-data-3">
+                                            <label class="select" for="slct-date3">
+                                                <select id="slct-date3" required="required">
+                                                    <option value="10min">10 minutos</option>
+                                                    <option value="30min">30 minutos</option>
+                                                    <option value="1h">1 hora</option>
+                                                </select>
+                                                <svg>
+                                                    <use xlink:href="#select-arrow-down"></use>
+                                                </svg>
+                                            </label>
+                                            <!-- SVG Sprites-->
+                                            <svg class="sprites">
+                                                <symbol id="select-arrow-down" viewbox="0 0 10 6">
+                                                    <polyline points="1 1 5 5 9 1"></polyline>
+                                                </symbol>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="engloba-info vermelho">
+                                        <div class="traco-info vermelho"></div>
+                                        <h5>Erro! Númexo Máximo de dias excedido</h5>
+                                    </div>
+                                </div>
                             </div>
                             <div class="engloba-select">
                                 <h4>Tipos de Gráfico</h4>
                                 <div class="select-data">
-                                    <label class="select" for="slct">
-                                        <select id="slct" required="required">
+                                    <label class="select" for="slct2">
+                                        <select id="slct2" required="required">
                                             <option value="" disabled="disabled" selected="selected">Lista de Seleção</option>
-                                            <option value="#">One</option>
-                                            <option value="#">Two</option>
-                                            <option value="#">Three</option>
-                                            <option value="#">Four</option>
-                                            <option value="#">Five</option>
-                                            <option value="#">Six</option>
-                                            <option value="#">Seven</option>
+                                            <option value="linear-graphic">Plot Linear</option>
+                                            <option value="barrinha-graphic">Barra</option>
+                                            <option value="pizza-graphic">Pizza</option>
                                         </select>
                                         <svg>
                                             <use xlink:href="#select-arrow-down"></use>
@@ -323,7 +534,7 @@
                                     <!-- end toggle markup	 -->
                                 </div>
                                 <div class="engloba-buttons-green-red">
-                                    <div class="button-common button-green">
+                                    <div class="button-common button-green" id="button-realiza-consulta">
                                         Realizar Consulta
                                     </div>
                                     <div class="button-common button-red">
