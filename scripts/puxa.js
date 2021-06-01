@@ -3,11 +3,9 @@ let vet = [];
 let chart;
 let vetFim = []; //data
 
-var urlencoded = new URLSearchParams();
-urlencoded.append("option", "tudo");
+let btConsulta;
 
 
-let onChangeGraph;
 
 
 let options = {
@@ -104,10 +102,21 @@ let options = {
     }
 };
 
+var urlencoded = new URLSearchParams();
+urlencoded.append("option", "tudo");
+
+
+let onChangeGraph;
+
+
 
 const deleteGraph = () => {
-    $('#myChart').remove(); // this is my <canvas> element
-    $('#chart').append('<canvas id="myChart" width="400" height="400"><canvas>');
+    if (chart) {
+        chart.destroy();
+        chart = undefined;
+    }
+    $('#chart').remove(); 
+    $("div.panel-body").append('<div id="chart"></div>');
 }
 
 $(document).ready(function () {
@@ -138,7 +147,11 @@ $(document).ready(function () {
 
     //
 
-    $('div#button-realiza-consulta').click(doRequestQueryAPI());
+    btConsulta = document.querySelectorAll('#button-realiza-consulta')[0];
+    console.log(btConsulta);
+    btConsulta.addEventListener('click', doRequestQueryAPI);
+
+    document.querySelectorAll('#button-reset-inputs')[0].addEventListener('click', resetAllInputs);
 
     puxaData();
 });
@@ -172,7 +185,9 @@ const puxaData = async () => {
                 ]);
             });
             console.log(vetFim)
-            chart = new Highcharts.Chart('chart', options);
+            if (!chart) {
+                chart = new Highcharts.Chart('chart', options);
+            }
         })
         .catch(error => console.log('error', error));
         
@@ -203,18 +218,21 @@ const onChangeDataSensor = () => {
                     $('#temp-sensor').css('display', 'none');
                     $('#vento-sensor').css('display', 'none');
                     $('#irradiancia-sensor').css('display', 'none');
+                    document.querySelectorAll('input#vazao')[0].checked = true;
                 }
                 else if ($(this).val() == "vento") {
                     $('#vento-sensor').css('display', 'flex');
                     $('#temp-sensor').css('display', 'none');
                     $('#vazao-sensor').css('display', 'none');
                     $('#irradiancia-sensor').css('display', 'none');
+                    document.querySelectorAll('input#vento')[0].checked = true;
                 }
                 else if ($(this).val() == "irradiancia"){
                     $('#irradiancia-sensor').css('display', 'flex');
                     $('#temp-sensor').css('display', 'none');
                     $('#vazao-sensor').css('display', 'none');
                     $('#vento-sensor').css('display', 'none');
+                    document.querySelectorAll('input#irradiancia')[0].checked = true;
                 }
                 else {
                     $('.quant-sensores-div').css('display', 'none');
@@ -269,9 +287,7 @@ const onInputDateSucced = () => {
     let date1 = new Date(initialDate.replace(/-/g, "/"));
     var date2 = new Date(endDate.replace(/-/g, "/"));
     var timeDiff = Math.abs(date2.getTime() - date1.getTime()); // retorna o parâmetro como modulo de x
-    console.log(`TimeDiff ${timeDiff}`);
     let diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
-    console.log(`TimeDays ${diffDays}`);
     return diffDays;
 }
 
@@ -312,13 +328,23 @@ const onChangeInputDate = () => {
 const onChangeInputTypeGraphic = () => {
     $('#slct2').change(function () {
         checkAllInputsData();
+        if($(this).val() !== null) {
+            if ($(this).val() == "linear-graphic") {
+                options.chart.type = "line";
+            }
+            else if ($(this).val() == "barrinha-graphic") {
+                options.chart.type = "column";
+            }
+        }
     })
 }
 
 const checkAllInputsData = () => {
     if ($('#slct').val() !== null && $('#slct1').val() !== null && $('#slct2').val() !== null) {
-        console.log("a");
+        console.log('aaa');
+        
         $('div#button-realiza-consulta').removeClass('disabled');
+        return true;
     }
     else {
         $('div#button-realiza-consulta').addClass('disabled');
@@ -327,7 +353,10 @@ const checkAllInputsData = () => {
 }
 
 const doRequestQueryAPI = () => {
-    checkAllInputsData();
+    if(checkAllInputsData()) {
+        deleteGraph();
+        puxaData();
+    }
 }
 
 function resetInputDate() {
@@ -340,4 +369,20 @@ function getRandomIntInclusive(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return parseInt(Math.floor(Math.random() * (max - min + 1)) + min);
+}
+
+const resetAllInputs = () => {
+    $('#slct').val(null);
+    resetCheckButtons();
+    $('#temp-sensor').css('display', 'none');
+    $('#vazao-sensor').css('display', 'none');
+    $('#vento-sensor').css('display', 'none');
+    $('#irradiancia-sensor').css('display', 'none');
+    $('#slct1').val(null);
+    $('.engloba-input-customizado').css('display', 'none');
+    $('.reso').css('display', 'none');
+    $('#initialDate').val("");
+    $('#endDate').val("");
+    $('#slct2').val(null);
+    checkAllInputsData();
 }
