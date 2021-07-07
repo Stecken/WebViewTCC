@@ -1,112 +1,7 @@
 let buttonControlGraphic, stateBt = false;
-let vet = [];
-let chart;
-let vetFim = []; //data
-
+let typeTime = null;
+const typesLast = ["ult5min", "ult30min", "ult1h", "ult2h", "ult5h", "ult10h", "ult24h"]
 let btConsulta;
-
-
-
-
-let options = {
-    chart: {
-        type: 'line',
-        events: {
-            load: async function () {
-
-                // set up the updating of the chart each second
-                var series = this.series[0];
-                setInterval(function () {
-                    var x = (new Date()).getTime() // current time
-                    //let dados = puxaData();
-                    var y = Math.round(Math.random() * 100);
-                    series.addPoint([x, y], true, true);
-                }, 5000);
-            }
-        }
-    },
-
-    time: {
-        useUTC: false
-    },
-
-    yAxis: {
-        title: {
-            text: "Temperatura (C)"
-        },
-        pointStart: 0,
-        plotlines: [{ value: 0, width: 1, "color": "#808080" }]
-    },
-    tooltip: {
-        valueSuffix: "C°"
-    },
-    legend: {
-        layout: "vertical",
-        align: "right",
-        verticalAlign: "middle",
-        borderWidth: 0
-    },
-
-    title: {
-        text: 'Live random data'
-    },
-
-    exporting: {
-        enabled: false
-    },
-
-    series: [{
-        name: 'T1',
-        data: vetFim
-    }],
-    plotOptions: {
-        bar: {
-            colorByPoint: true
-        },
-        series: {
-            zones: [{
-                color: '#4CAF50',
-                value: 0
-            }, {
-                color: '#8BC34A',
-                value: 10
-            }, {
-                color: '#CDDC39',
-                value: 20
-            }, {
-                color: '#CDDC39',
-                value: 30
-            }, {
-                color: '#FFEB3B',
-                value: 40
-            }, {
-                color: '#FFEB3B',
-                value: 50
-            }, {
-                color: '#FFC107',
-                value: 60
-            }, {
-                color: '#FF9800',
-                value: 70
-            }, {
-                color: '#FF5722',
-                value: 80
-            }, {
-                color: '#F44336',
-                value: 90
-            }, {
-                color: '#F44336',
-                value: Number.MAX_VALUE
-            }]
-        }
-    }
-};
-
-var urlencoded = new URLSearchParams();
-urlencoded.append("option", "tudo");
-
-
-let onChangeGraph;
 
 
 
@@ -156,48 +51,8 @@ $(document).ready(function () {
     puxaData();
 });
 
-const puxaData = async () => {
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
-
-
-
-    var requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        body: urlencoded,
-        redirect: 'follow'
-    };
-
-    let fim = await fetch("http://concentradorsolar.000webhostapp.com/api", requestOptions)
-        .then(response => response.json())
-        .then((result) => {
-            console.log(result);
-            let resultInvert = result["content"].reverse();
-            resultInvert.forEach((element) => {
-                vet.push(parseInt(element[0].temperaturas[0]) + getRandomIntInclusive(1, 499));
-            });
-            var time = (new Date()).getTime();
-            vet.forEach((element) => {
-                vetFim.push([
-                    time + Math.random() * 100 ,
-                    Math.round(element + Math.random() * 100)
-                ]);
-            });
-            console.log(vetFim)
-            if (!chart) {
-                chart = new Highcharts.Chart('chart', options);
-            }
-        })
-        .catch(error => console.log('error', error));
-        
-    
-
-    return fim;
-}
-
 const onChangeDataSensor = () => {
-    const stateValue = ["temperatura", "vazao", "vento", "irradiancia"];
+    const stateValue = ["temperature", "flow", "velocityWind", "irradiance"];
     let equalElement = false;
     $('#slct').change(function () {
         checkAllInputsData();
@@ -207,27 +62,27 @@ const onChangeDataSensor = () => {
                 equalElement = true;
                 $('.quant-sensores-div').css('display', 'flex');
                 
-                if ($(this).val() == "temperatura") {
+                if ($(this).val() == "temperature") {
                     $('#temp-sensor').css('display', 'flex');
                     $('#vazao-sensor').css('display', 'none');
                     $('#vento-sensor').css('display', 'none');
                     $('#irradiancia-sensor').css('display', 'none');
                 }
-                else if ($(this).val() == "vazao") {
+                else if ($(this).val() == "flow") {
                     $('#vazao-sensor').css('display', 'flex');
                     $('#temp-sensor').css('display', 'none');
                     $('#vento-sensor').css('display', 'none');
                     $('#irradiancia-sensor').css('display', 'none');
                     document.querySelectorAll('input#vazao')[0].checked = true;
                 }
-                else if ($(this).val() == "vento") {
+                else if ($(this).val() == "velocityWind") {
                     $('#vento-sensor').css('display', 'flex');
                     $('#temp-sensor').css('display', 'none');
                     $('#vazao-sensor').css('display', 'none');
                     $('#irradiancia-sensor').css('display', 'none');
                     document.querySelectorAll('input#vento')[0].checked = true;
                 }
-                else if ($(this).val() == "irradiancia"){
+                else if ($(this).val() == "irradiance"){
                     $('#irradiancia-sensor').css('display', 'flex');
                     $('#temp-sensor').css('display', 'none');
                     $('#vazao-sensor').css('display', 'none');
@@ -257,8 +112,14 @@ function resetCheckButtons() {
 const onChangePeriodo = () => {
     const stateValue = ["ult5min", "ult30min", "ult1h", "ult2h", "ult5h", "ult10h", "ult24h", "custom"];
     let equalElement = false;
+
+    onChangeTimeCustom();
+
     $('#slct1').change(function () {
         checkAllInputsData();
+
+        typeTime = $('#slct1').val(); // guardar configuração de tipo de tempo
+        console.log(typeTime);
         stateValue.forEach((element) => {
             if (element == $(this).val()) {
                 equalElement = true;
@@ -291,6 +152,18 @@ const onInputDateSucced = () => {
     return diffDays;
 }
 
+const onChangeTimeCustom = () => {
+    let inputCustomType;
+    $('#customTime').change(() => {
+        inputCustomType = $('#customTime').val();
+        if (inputCustomType) {
+            $('.config-time-custom').css('display', 'flex');
+        }
+        else {
+            $('.config-time-custom').css('display', 'none');
+        }
+    })
+}
 
 const onChangeInputDate = () => {
     $('#initialDate, #endDate').change(function () {
@@ -341,7 +214,7 @@ const onChangeInputTypeGraphic = () => {
 
 const checkAllInputsData = () => {
     if ($('#slct').val() !== null && $('#slct1').val() !== null && $('#slct2').val() !== null) {
-        console.log('aaa');
+        console.log($('#initialDate').val() + 'T' + $('#initialTime').val() + ":00");
         
         $('div#button-realiza-consulta').removeClass('disabled');
         return true;
@@ -355,7 +228,13 @@ const checkAllInputsData = () => {
 const doRequestQueryAPI = () => {
     if(checkAllInputsData()) {
         deleteGraph();
-        puxaData();
+        
+        if (typeTime == "custom") {
+            puxaDataCustom();
+        }
+        else {
+            puxaLastData();
+        }
     }
 }
 

@@ -729,6 +729,21 @@ input[type=number]
 /****************************************/
 
 
+.input-time-custom {
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.config-time-custom {
+  display: none;
+  flex-direction: column;
+}
+
+.config-time-custom > div {
+  padding-top: 1rem;
+}
+
 /*******STYLES INFO*************/
 
 div.engloba-info {
