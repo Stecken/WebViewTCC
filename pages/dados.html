@@ -219,10 +219,10 @@
                                     <label class="select" for="slct">
                                         <select id="slct" required="required">
                                             <option value="" disabled="disabled" selected="selected">Lista de Seleção</option>
-                                            <option value="temperatura">Temperatura</option>
-                                            <option value="vazao">Vazão</option>
-                                            <option value="vento">Velocidade do Vento</option>
-                                            <option value="irradiancia">Irradiância Solar</option>
+                                            <option value="temperature">Temperatura</option>
+                                            <option value="flow">Vazão</option>
+                                            <option value="velocityWind">Velocidade do Vento</option>
+                                            <option value="irradiance">Irradiância Solar</option>
                                         </select>
                                         <svg>
                                             <use xlink:href="#select-arrow-down"></use>
@@ -237,7 +237,20 @@
                                 </div>
                             </div>
                             <div class="engloba-quant-sensores">
-                                <h4>Exibir dados dos sensores</h4>
+                                <div class="engloba-header-sensores">
+                                    <h4>Exibir dados dos sensores</h4>
+                                    <div class="select-all">
+                                        <input class="inp-cbx" id="slct-all" type="checkbox" />
+                                        <label class="cbx" for="slct-all">
+                                            <span>
+                                                <svg width="12px" height="10px">
+                                                    <use xlink:href="#check"></use>
+                                                </svg>
+                                            </span>
+                                            <span>Selecionar todos</span>
+                                        </label>
+                                    </div>
+                                </div>
                                 <div class="quant-sensores-div">
                                     <div class="sensor" id="temp-sensor">
                                         <input class="inp-cbx" id="t1" type="checkbox" />
@@ -417,14 +430,39 @@
                                     </svg>
                                 </div>
                                 <div class="engloba-input-customizado">
-                                    <div class="input-date-custom">
-                                        <label for="initialDate">Data Inicial</label>
-                                        <input type="date" name="dateofbirth" id="initialDate">
+                                    <div class="engloba-datas-custom">
+                                        <div class="input-date-custom">
+                                            <label for="initialDate">Data Inicial</label>
+                                            <input type="date" name="dateofbirth" id="initialDate">
+                                        </div>
+                                        <div class="input-date-custom">
+                                            <label for="endDate">Data Final</label>
+                                            <input type="date" name="dateofbirth" id="endDate">
+                                        </div>
                                     </div>
-                                    <div class="input-date-custom">
-                                        <label for="endDate">Data Final</label>
-                                        <input type="date" name="dateofbirth" id="endDate">
+                                    <div class="input-time-custom">
+                                        <input class="inp-cbx" id="customTime" type="checkbox" />
+                                        <label class="cbx" for="customTime">
+                                            <span>
+                                                <svg width="12px" height="10px">
+                                                    <use xlink:href="#check"></use>
+                                                </svg>
+                                            </span>
+                                            <span>Horário Customizado</span>
+                                        </label>
+                                        <div class="config-time-custom">
+                                            <div class="input-date-custom">
+                                                <label for="initialTime">Horário Inicial</label>
+                                                <input type="time" id="initialTime">
+                                            </div>
+                                            <div class="input-date-custom">
+                                                <label for="endTime">Horário Final</label>
+                                                <input type="time" id="endTime">
+                                            </div>
+                                        </div>
                                     </div>
+                                    
+                                    
                                     <div class="reso">
                                         <h4>Resolução</h4>
                                         <div class="select-data-1">
@@ -492,10 +530,10 @@
                                 <h4>Tipos de Gráfico</h4>
                                 <div class="select-data">
                                     <label class="select" for="slct2">
-                                        <select id="slct2" required="required">
+                                        <select id="slct2" class="typePlot" required="required">
                                             <option value="" disabled="disabled" selected="selected">Lista de Seleção</option>
-                                            <option value="linear-graphic">Plot Linear</option>
-                                            <option value="barrinha-graphic">Barra</option>
+                                            <option value="line">Linear</option>
+                                            <option value="column">Coluna</option>
                                         </select>
                                         <svg>
                                             <use xlink:href="#select-arrow-down"></use>
@@ -514,7 +552,7 @@
                                     <!-- begin toggle markup	 -->
                     
                                     <label class="toggle" for="uniqueID">
-                                        <input type="checkbox" class="toggle__input" id="uniqueID" />
+                                        <input type="checkbox" class="toggle__input dynamicData" id="uniqueID" />
                                         <span class="toggle-track">
                                             <span class="toggle-indicator">
                                                 <!-- 	This check mark is optional	 -->
@@ -576,6 +614,7 @@
     <script src="/scripts/android.js"></script>
     <script src="/scripts/graphic.js"></script>
     <!--Puxar dados API-->
+    <script src="/scripts/requestData.js"></script>
     <script src="/scripts/puxa.js"></script>
 </body>
 

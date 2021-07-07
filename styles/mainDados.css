@@ -312,12 +312,45 @@ div.engloba-quant-sensores {
     width: 90%;
 }
 
-div.engloba-quant-sensores > h4 {
+div.engloba-quant-sensores > div.engloba-header-sensores {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+div.engloba-quant-sensores > div.engloba-header-sensores > h4 {
     margin: 0;
     padding-left: 0.5rem;
     padding-bottom: 0.5rem;
     font-size: 0.8rem;
     font-family: 'Metropolis-Light', sans-serif !important;
+}
+
+div.engloba-header-sensores > div.select-all {
+    display: flex;
+    margin-left: 1rem;
+}
+
+div.select-all > label {
+  display: flex;
+  align-items: center;
+}
+
+div.select-all > label > span {
+    font-size: 0.7rem !important;
+}
+
+div.select-all > label > span:first-child {
+  width: 14px;
+  height: 14px;
+}
+
+div.select-all > label > span:first-child svg {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 9px;
+  height: 9px;
 }
 
 /*Selects of Consulta*/
@@ -593,14 +626,20 @@ div.panel-body {
 
 div.engloba-input-customizado {
     display:flex;
+    flex-direction: column;
     display: none;
     flex-wrap:wrap;
     
 }
 
-div.engloba-input-customizado > div.input-date-custom,  div.engloba-input-customizado > div.reso{
+div.engloba-input-customizado > div.engloba-datas-custom > div.input-date-custom,  div.engloba-input-customizado > div.reso{
     padding-top: 1rem;
     padding-right: 1rem;
+}
+
+div.engloba-input-customizado > div.engloba-datas-custom {
+    display: flex;
+    flex-direction: row;
 }
 
 div.input-date-custom {
@@ -728,6 +767,25 @@ input[type=number]
 
 /****************************************/
 
+
+.input-time-custom {
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.config-time-custom {
+  display: none;
+  flex-direction: row;
+}
+
+.config-time-custom > div {
+    padding-top: 1rem;
+}
+
+.config-time-custom > div:last-child {
+    padding-left: 1rem;
+}
 
 /*******STYLES INFO*************/
 

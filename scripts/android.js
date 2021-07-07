@@ -5,7 +5,9 @@ let menutagA;
 /*Menu Sobre Android*/
 let buttonNavAndroid;
 let eitaNav;
-let seta
+let seta;
+
+
 function imgMenu() {
     state = !state;
     if(state){
