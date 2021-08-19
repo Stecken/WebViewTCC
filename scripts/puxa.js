@@ -40,6 +40,7 @@ $(document).ready(function () {
     $('#time-month').text(d.getMonth() + 1); // porque o retorno começa de "0"
     $('#time-year').text(d.getFullYear());
 
+    updateAllSensorsLastMinute();
     // 
 
     onChangeDataSensor();

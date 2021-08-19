@@ -30,7 +30,7 @@ let options = {
         plotlines: [{ value: 0, width: 1, "color": "#808080" }]
     },
     tooltip: {
-        valueSuffix: "C°"
+        valueSuffix: "°C"
     },
     legend: {
         layout: "vertical",
@@ -111,7 +111,8 @@ const puxaLastData = async () => {
         result.content.forEach((element) => {
             count1 = 0;
             Object.entries(element.sensores).forEach(sensor => {
-                options.series[count1].data.push([Number(element.tempo) * 1000, Number(sensor[1]) + getRandomIntInclusive(1, 499)])
+                sensor[1] = Number(parseFloat(Number(sensor[1])).toFixed(2));
+                options.series[count1].data.push([Number(element.tempo) * 1000, sensor[1]])
                 count1 = count1 + 1;
             })
         });
@@ -163,8 +164,9 @@ const puxaLastMinute = async (typedata, sensors) => {
                 count1 = 0;
                 minutesToAdd = minutesToAdd + 1;
                 Object.entries(element.sensores).forEach(sensor => {
+                    sensor[1] = Number(parseFloat(Number(sensor[1])).toFixed(2));
                     chart.series[count1].addPoint([(Number(element.tempo) * 1000) + minutesToAdd * 60000, 
-                        Number(sensor[1]) + getRandomIntInclusive(1, 499)], true, true)
+                        sensor[1]], true, true)
                     count1 = count1 + 1;
                 })
             });
@@ -213,7 +215,8 @@ const puxaDataCustom = async () => {
             result.content.forEach((element) => {
                 count1 = 0;
                 Object.entries(element.sensores).forEach(sensor => {
-                    options.series[count1].data.push([Number(element.tempo) * 1000, Number(sensor[1]) + getRandomIntInclusive(1, 499)])
+                    sensor[1] = Number(parseFloat(Number(sensor[1])).toFixed(2));
+                    options.series[count1].data.push([Number(element.tempo) * 1000, sensor[1]])
                     count1 = count1 + 1;
                 })
             });
@@ -299,4 +302,37 @@ function getListSensores() {
     listSensors = listSensors.slice(0, -1); // retira a última virgula
 
     return listSensors;
+}
+
+function updateAllSensorsLastMinute() {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+
+    var urlencoded = new URLSearchParams();
+    urlencoded.append("typeTime", "lastMinute");
+    urlencoded.append("typeData", "all");
+
+    var requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body: urlencoded,
+    redirect: 'follow'
+    };
+
+    fetch("https://concentradorsolar.000webhostapp.com/api", requestOptions)
+    .then(response => response.json())
+    .then(result => {
+        console.log(result)
+        let tempMedia = 0;
+        for (let i = 1; i < 11; i++) {
+            console.log(result.content[0].sensores[`T${i}`])
+            tempMedia += Number(result.content[0].sensores[`T${i}`]);
+        }
+        $('#temperatura-valor').text(`${parseInt(tempMedia) / 10} °C`); // coloca a média aritmética das temperaturas
+        $('#irradiancia-valor').text(`${parseInt(result.content[0].sensores["IR1"])} W/m²`)
+        $('#vazao-valor').text(`${parseInt(result.content[0].sensores["V1"])} mL/min`)
+        $('#luminosidade-valor').text(`${parseInt(result.content[0].sensores["L1"])} W/m²`)
+        $('#vento-valor').text(`${parseInt(result.content[0].sensores["AN1"])} Km/h`)
+    })
+    .catch(error => console.log('error', error));
 }
