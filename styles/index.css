@@ -461,6 +461,10 @@ img#seta-home {
     text-align: center;
 }
 
+div#menu-desktop > a {
+    overflow-x: hidden;
+}
+
 @media screen and (max-height: 400px){
     div.titulo-header {
         font-size: 2vh;

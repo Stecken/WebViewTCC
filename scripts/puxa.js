@@ -35,9 +35,10 @@ $(document).ready(function () {
     else {
         $('#time-minute').text(d.getMinutes());
     }
-    
+    let date = d.getMonth() + 1;
+
     $('#time-day').text(d.getDate());
-    $('#time-month').text(d.getMonth() + 1); // porque o retorno começa de "0"
+    $('#time-month').text((date <= 9) ? `0${date}` : date); // porque o retorno começa de "0"
     $('#time-year').text(d.getFullYear());
 
     updateAllSensorsLastMinute();
