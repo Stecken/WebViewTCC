@@ -24,7 +24,7 @@ function init3dTCC() {
     }
     else {
         button3d.innerText = "Habilitar Visualização 3D";
-        campos3D[0].childNodes[1].remove();
+        container.childNodes[1].remove();
     }
 }
 
