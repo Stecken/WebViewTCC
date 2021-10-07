@@ -6,6 +6,7 @@ import { OBJLoader } from '/libdeploy/OBJLoader.js';
 import { OrbitControls } from '/libdeploy/OrbitControls.js';
 
 let camera, scene, renderer, controls;
+let container;
 
 let mouseX = 0, mouseY = 0;
 
@@ -35,7 +36,7 @@ $(document).ready(() => {
 
 function init() {
 
-    const container = document.getElementById('render');
+    container = document.getElementById('render');
 
     camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 7000);
     camera.position.z = 5000;
@@ -83,6 +84,7 @@ function init() {
                 .setPath('/libdeploy/glTF/')
                 .load('Montagem_Final.obj', function (object) {
                     window.object = object;
+                    object.position.x = -250;
                     object.position.y = -300;
                     object.rotateZ(-1.5831853071795867);
                     object.rotateX(3.140868240812233);
@@ -117,13 +119,13 @@ function init() {
 
 function onWindowResize() {
 
-    windowHalfX = window.innerWidth / 2;
-    windowHalfY = window.innerHeight / 2;
-
     camera.aspect = window.innerWidth / window.innerHeight;
+
     camera.updateProjectionMatrix();
 
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(container.offsetWidth, window.innerHeight - 150);
+
+    render();
 
 }
 
