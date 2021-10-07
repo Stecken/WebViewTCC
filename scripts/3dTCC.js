@@ -1,37 +1,25 @@
 import * as THREE from '/libdeploy/three.module.js';
 
-import { GUI } from '/libdeploy/dat.gui.module.js';
+import { DDSLoader } from '/libdeploy/DDSLoader.js';
+import { MTLLoader } from '/libdeploy/MTLLoader.js';
+import { OBJLoader } from '/libdeploy/OBJLoader.js';
 import { OrbitControls } from '/libdeploy/OrbitControls.js';
-import { GLTFLoader } from '/libdeploy/GLTFLoader.js';
-import { RGBELoader } from '/libdeploy/RGBELoader.js';
 
-let mesh, renderer, scene, camera, controls;
-let gui, guiExposure = null;
-let campos3D;
-let liga3D = false;
-let button3d;
+let camera, scene, renderer, controls;
 
-const params = {
-    exposure: 1.0,
-    toneMapping: 'ACESFilmic'
-};
+let mouseX = 0, mouseY = 0;
 
-const toneMappingOptions = {
-    None: THREE.NoToneMapping,
-    Linear: THREE.LinearToneMapping,
-    Reinhard: THREE.ReinhardToneMapping,
-    Cineon: THREE.CineonToneMapping,
-    ACESFilmic: THREE.ACESFilmicToneMapping,
-    Custom: THREE.CustomToneMapping
-};
+let windowHalfX = window.innerWidth / 2;
+let windowHalfY = window.innerHeight / 2;
+
+let liga3D, button3d
 
 function init3dTCC() {
     liga3D = !liga3D;
-    if(liga3D) {
+    if (liga3D) {
         button3d.innerText = "Desabilitar Visualização 3D";
-        init().catch(function (err) {
-            console.error(err);
-        });
+        init();
+        animate();
     }
     else {
         button3d.innerText = "Habilitar Visualização 3D";
@@ -44,36 +32,73 @@ $(document).ready(() => {
     button3d.addEventListener('click', init3dTCC);
 });
 
-async function init() {
-    campos3D = document.getElementsByClassName('render-3d');
-    renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setSize(campos3D[0].offsetWidth, window.innerHeight - 150);
-   
-    campos3D[0].appendChild(renderer.domElement);
-    console.log(renderer.domElement);
-    renderer.toneMapping = toneMappingOptions[params.toneMapping];
-    renderer.toneMappingExposure = params.exposure;
 
-    renderer.outputEncoding = THREE.sRGBEncoding;
+function init() {
 
-    // Set CustomToneMapping to Uncharted2
-    // source: http://filmicworlds.com/blog/filmic-tonemapping-operators/
+    const container = document.getElementById('render');
 
-    THREE.ShaderChunk.tonemapping_pars_fragment = THREE.ShaderChunk.tonemapping_pars_fragment.replace(
-        'vec3 CustomToneMapping( vec3 color ) { return color; }',
-        `#define Uncharted2Helper( x ) max( ( ( x * ( 0.15 * x + 0.10 * 0.50 ) + 0.20 * 0.02 ) / ( x * ( 0.15 * x + 0.50 ) + 0.20 * 0.30 ) ) - 0.02 / 0.30, vec3( 0.0 ) )
-					float toneMappingWhitePoint = 1.0;
-					vec3 CustomToneMapping( vec3 color ) {
-						color *= toneMappingExposure;
-						return saturate( Uncharted2Helper( color ) / Uncharted2Helper( vec3( toneMappingWhitePoint ) ) );
-					}`
-    );
+    camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 7000);
+    camera.position.z = 5000;
+
+    // scene
 
     scene = new THREE.Scene();
 
-    camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.25, 20);
-    camera.position.set(- 1.8, 0.6, 2.7);
+    const ambientLight = new THREE.AmbientLight(0xcccccc, 0.4);
+    scene.add(ambientLight);
+
+    const pointLight = new THREE.PointLight(0xffffff, 0.8);
+    camera.add(pointLight);
+    scene.add(camera);
+
+    // model
+
+    const onProgress = function (xhr) {
+
+        if (xhr.lengthComputable) {
+
+            const percentComplete = xhr.loaded / xhr.total * 100;
+            console.log(Math.round(percentComplete, 2) + '% downloaded');
+
+        }
+
+    };
+
+    const onError = function () { };
+
+    const manager = new THREE.LoadingManager();
+    manager.addHandler(/\.dds$/i, new DDSLoader());
+
+    // comment in the following line and import TGALoader if your asset uses TGA textures
+    // manager.addHandler( /\.tga$/i, new TGALoader() );
+
+    new MTLLoader(manager)
+        .setPath('/libdeploy/glTF/')
+        .load('Montagem_Final.mtl', function (materials) {
+
+            materials.preload();
+
+            new OBJLoader(manager)
+                .setMaterials(materials)
+                .setPath('/libdeploy/glTF/')
+                .load('Montagem_Final.obj', function (object) {
+                    window.object = object;
+                    object.position.y = -300;
+                    object.rotateZ(-1.5831853071795867);
+                    object.rotateX(3.140868240812233);
+                    object.rotateY(4.8);
+                    scene.add(object);
+
+                }, onProgress, onError);
+
+        });
+
+    //
+
+    renderer = new THREE.WebGLRenderer();
+    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setSize(container.offsetWidth, window.innerHeight - 150);
+    container.appendChild(renderer.domElement);
 
     controls = new OrbitControls(camera, renderer.domElement);
     controls.addEventListener('change', render); // use if there is no animation loop
@@ -82,86 +107,38 @@ async function init() {
     controls.target.set(0, 0, - 0.2);
     controls.update();
 
-    const pmremGenerator = new THREE.PMREMGenerator(renderer);
-    pmremGenerator.compileEquirectangularShader();
+    document.addEventListener('mousemove', onDocumentMouseMove);
 
-    const rgbeLoader = new RGBELoader()
-        .setDataType(THREE.UnsignedByteType)
-        .setPath('/libdeploy/equirectangular/');
-
-    const gltfLoader = new GLTFLoader().setPath('/libdeploy/glTF/');
-
-    const [texture, gltf] = await Promise.all([
-        rgbeLoader.loadAsync('venice_sunset_1k.hdr'),
-        gltfLoader.loadAsync('DamagedHelmet.gltf'),
-    ]);
-
-    // environment
-
-    const envMap = pmremGenerator.fromEquirectangular(texture).texture;
-
-    scene.background = envMap;
-    scene.environment = envMap;
-
-    texture.dispose();
-    pmremGenerator.dispose();
-
-    // model
-
-    gltf.scene.traverse(function (child) {
-
-        if (child.isMesh) {
-
-            mesh = child;
-            scene.add(mesh);
-
-        }
-
-    });
-
-    render();
+    //
 
     window.addEventListener('resize', onWindowResize);
-
-    let gui = new GUI({ autoPlace: true });
-    new GUI({
-
-    });
-    gui.domElement.id = "render";
-}
-
-function updateGUI() {
-
-    if (guiExposure !== null) {
-
-        gui.remove(guiExposure);
-        guiExposure = null;
-
-    }
-
-    if (params.toneMapping !== 'None') {
-
-        guiExposure = gui.add(params, 'exposure', 0, 2)
-
-            .onChange(function () {
-
-                renderer.toneMappingExposure = params.exposure;
-                render();
-
-            });
-
-    }
 
 }
 
 function onWindowResize() {
 
-    camera.aspect = window.innerWidth / window.innerHeight;
+    windowHalfX = window.innerWidth / 2;
+    windowHalfY = window.innerHeight / 2;
 
+    camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
 
-    renderer.setSize(campos3D[0].offsetWidth, window.innerHeight - 150);
+    renderer.setSize(window.innerWidth, window.innerHeight);
 
+}
+
+function onDocumentMouseMove(event) {
+
+    mouseX = (event.clientX - windowHalfX) / 2;
+    mouseY = (event.clientY - windowHalfY) / 2;
+
+}
+
+//
+
+function animate() {
+
+    requestAnimationFrame(animate);
     render();
 
 }
