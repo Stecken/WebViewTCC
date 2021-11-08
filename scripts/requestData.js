@@ -4,6 +4,8 @@ let vetFim = []; //data
 
 let minutesToAdd = 0;
 
+let intervalPoint = null;
+
 let options = {
     chart: {
         type: 'line'
@@ -120,9 +122,9 @@ const puxaLastData = async () => {
         options.chart.type = `${$('.typePlot option:selected').val()}`;
         let events = {
             load: function () {               
-                setInterval(function () {
+                intervalPoint = setInterval(function () {
                     puxaLastMinute(`${$('#slct').val()}`, listSensors);
-                }, 5000);
+                }, 60000); // 1 minuto
             }
         }
 

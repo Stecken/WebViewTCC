@@ -76,6 +76,7 @@ const onChangeDataSensor = () => {
                 $('.quant-sensores-div').css('display', 'flex');
                 
                 if ($(this).val() == "temperature") {
+                    options.yAxis.title.text = "Temperatura (°C)";
                     $('#temp-sensor').css('display', 'flex');
                     $('#vazao-sensor').css('display', 'none');
                     $('#vento-sensor').css('display', 'none');
@@ -85,6 +86,7 @@ const onChangeDataSensor = () => {
                     btSelectAll.addEventListener('click', selectAllTempSensors);
                 }
                 else if ($(this).val() == "flow") {
+                    options.yAxis.title.text = "Vazão de Fluido (mL/min)";
                     $('#vazao-sensor').css('display', 'flex');
                     $('#temp-sensor').css('display', 'none');
                     $('#vento-sensor').css('display', 'none');
@@ -96,6 +98,7 @@ const onChangeDataSensor = () => {
                     
                 }
                 else if ($(this).val() == "velocityWind") {
+                    options.yAxis.title.text = "Velocidade do Vento (Km/h)";
                     $('#vento-sensor').css('display', 'flex');
                     $('#temp-sensor').css('display', 'none');
                     $('#vazao-sensor').css('display', 'none');
@@ -105,7 +108,8 @@ const onChangeDataSensor = () => {
                     btSelectAll.removeEventListener('click', selectAllTempSensors);
                     $('.select-all').css('display', 'none');
                 }
-                else if ($(this).val() == "irradiance"){
+                else if ($(this).val() == "irradiance") {
+                    options.yAxis.title.text = "Irradiância (W/m²)";
                     $('#irradiancia-sensor').css('display', 'flex');
                     $('#temp-sensor').css('display', 'none');
                     $('#vazao-sensor').css('display', 'none');
@@ -270,6 +274,7 @@ const doRequestQueryAPI = () => {
     if(checkAllInputsData()) {
         if(chart) { // verifica se há necessidade de apagar caso exista um chart
             deleteGraph();
+            clearInterval(intervalPoint);
         }
         
         if (typeTime == "custom") {
